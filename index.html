@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Network Neuroscience</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+        <link href="https://cdn.jsdelivr.net/npm/quasar@1.9.10/dist/quasar.min.css" rel="stylesheet" type="text/css">
+        <link href="https://cdn.jsdelivr.net/npm/animate.css@^3.5.2/animate.min.css" rel="stylesheet">
+
+        <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="/js/main.js"></script>
+    </head>
+
+    <style>
+        html, body {
+            margin:0;
+            padding:0;
+        }
+        .userIcon {
+            width: 32px;
+            height: 32px;
+            clip-path: circle(16px at center);
+        }
+        #userAvatar {
+            display: none;
+        }
+        .auth-dialog > div:first-child {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background: rgba(0,0,0,0.5);
+            border: thin solid #777;
+            transform: translate(-50%, -50%);
+            z-index: 1050;
+        }
+        #loginStatus a {
+            border-bottom: none;
+            color: white;
+        }
+        #loginStatus a:hover {
+            /* border-bottom: 1px solid rgb(190, 181, 181); */
+            border-bottom: none;
+            color: grey;
+            opacity: 0.6;
+        }
+        /* #text {
+            position: relative;
+            padding:1em;
+            padding-top: 5em;
+            pointer-events: none;
+            background-image: linear-gradient(rgba(20,20,20,0), rgba(20,20,20,0.25), rgba(20,20,20,0.75), rgba(20,20,20,0.75),rgba(20,20,20,0));
+            z-index: 100;
+        } */
+        .textparagraph p {
+            width: 100%;
+            position:relative;
+            padding: 1rem;
+            /* background-image: linear-gradient(rgba(20,20,20,0), rgba(20,20,20,0.5), rgba(20,20,20,0.75), rgba(20,20,20,0.5),rgba(20,20,20,0)); */
+            background: rgba(0,0,0,0.3);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        #program p {
+            width: 100%;
+            position:relative;
+            padding-top: 0.6rem;
+            /* background-image: linear-gradient(rgba(20,20,20,0), rgba(20,20,20,0.5), rgba(20,20,20,0.75), rgba(20,20,20,0.5),rgba(20,20,20,0)); */
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        #landinggraph a, #program a, #submit a, #register a {
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+        }
+        #landinggraph a:hover,#landinggraph a:focus,#landinggraph a:active,#program a:hover,#program a:focus,#program a:active, #submit a:hover,#submit a:focus,#submit a:active, #register a:hover,#register a:focus,#register a:active {
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            color: grey;
+        }
+        h4 {
+            font-weight: 600;
+        }
+
+        #community {
+            display:flex;
+            flex-direction: column;
+            width: 100%;
+            /* justify-content: space-around;
+            align-items: center; */
+        }
+        #conftitle h1 {
+            position:absolute;
+            top:10%;
+            left:5%!important;
+            /* transform: translate( -50%, -50%); */
+            font-family: 'Roboto', sans-serif !important;
+            line-height: 1.2 !important;
+            letter-spacing: normal;
+            font-size: 4.8rem;
+            font-weight: 900;
+            opacity: 1.0;
+            background: none!important;
+            z-index:51;
+        }
+        #conftitle {
+            flex: 1 1 100%;
+        }
+        #networkContainer {
+            flex: 1 1 100%;
+        }
+        #network {
+            z-index: 50;
+            /* position: fixed; */
+            position: relative;
+            /* width: 100%; */
+            height: 100%;
+            top: 0;
+            bottom:0;
+            flex: 1 1 100%;
+            /* display: flex; */
+            background-image: url("images/landing/networkgraph_bg.jpg");
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-position: center;
+        }
+        #network svg {
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        @keyframes shinebrightlikeadiamond {
+            0% { stroke-width: 0; stroke-opacity: 1; }
+            70% { stroke-width: 10px; stroke-opacity: 0.5; }
+            100% { stroke-width: 0; stroke-opacity: 0; }
+        } 
+        #network svg circle.logged {
+            stroke-width: 0;
+            stroke: #DDD;
+            animation: shinebrightlikeadiamond 1s ease infinite;
+        }
+        #network svg .link {
+            stroke: #fff;
+            stroke-opacity: 0.2;
+        }
+        #network svg .name {
+            fill: rgb(255,255,255,0.3);
+            font-size: 8px;
+        }
+        #network svg circle:hover + .name{
+            fill: rgb(255,255,255,1);
+        }
+        #network svg text {
+            cursor: default;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+        #network svg text::selection {
+            background: none;
+        }
+        /* [v-cloak] {
+            display: none;
+        } */
+        .col a:hover, .col a:focus, .col a:active, .text-h6 a:hover, .text-h6 a:focus, .text-h6 a:active {
+            color: grey!important;
+        }
+        .row {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        .col {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        #landinggraph {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            background: rgba(0,0,0,0.8);
+            background-image: url('/images/landing/background_s.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-position: center;
+            filter: grayscale(50%) contrast(150%) opacity(30%);
+            -webkit-filter: grayscale(80%) contrast(150%) opacity(100%);
+        }
+        #landinggraph p, #submit p, #register p {
+            background: none;
+            padding-top: 0.6rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+
+        #program {
+            /* background: rgba(30,0,0,0.5); */
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+            background-color: rgba(0,0,0,0.0);
+            /* background: rgba(0,0,0,0.8); */
+            background-image: url('images/landing/background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-position: center;
+            filter: grayscale(50%) contrast(150%) opacity(30%);
+            -webkit-filter: grayscale(80%) contrast(150%) opacity(100%);
+        }
+        #programTableContainer {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+        }
+        .programTableHeader {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            position: relative;
+        }
+        #programTableDays {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            /* background-image: url('/images/landing/program_bg.jpg'); */
+        }
+        .programDayHeader {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            position: relative;
+            /* background: rgba(255,255,255,0.8);
+            color: black;
+            padding-left: 1%; */
+        }
+        .programDayHeader p {
+            font-weight: 900!important;
+        }
+        #programDay1 {
+            display: flex;
+            width: 50%;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            align-items: baseline;
+            padding-left: 1%;
+            padding-right: 1%;
+            margin-right: 1%;
+            /* background: rgba(255,255,255,0.05); */
+            background: rgba(15,15,15,0.8);
+            /* border: thin solid white; */
+        }
+        #programDay2 {
+            display: flex;
+            width: 50%;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            align-items: baseline;
+            padding-right: 1%;
+            padding-left: 1%;
+            margin-left: 1%;
+            /* background: rgba(255,255,255,0.05); */
+            background: rgba(15,15,15,0.8);
+            /* background: rgba(0,0,0,0.35); */
+        }
+        .programSessionsEmpty {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            position: relative;
+            height: 23rem;
+            background: rgba(255,255,255,0.1);
+        }
+        /* .programSessions {
+            display: flex;
+            position: relative;
+            width: 100%;
+            flex-direction: row;
+            justify-content: flex-start;
+            background: rgba(255,255,255,0.8);
+            color: black;
+            padding-left: 1%;
+        } */
+        .programTableContentUneven {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+            align-content: space-between;
+            position: relative;
+            /* width: calc( 100% - 10px ); */
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            margin: 0px;
+            z-index: 1;
+        }
+        .programTableContentEven {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+            align-content: space-between;
+            position: relative;
+            /* width: calc( 100% - 10px ); */
+            width: 100%;
+            background: rgba(255,255,255,0.2);
+            margin: 0px;
+            z-index: 1;
+        }
+        .programTableItems {
+            border: 0;
+            flex: 1 1 100%;
+            position: relative;
+            margin: 15px;
+        }
+        #programDay1 p {
+            background: none;
+        }
+        #programDay2 p {
+            background: none;
+        }
+        .programSessions {
+            display: flex;
+            position: relative;
+            width: 100%;
+            flex-direction: row;
+            justify-content: flex-start;
+            background: rgba(255,255,255,0.8);
+            color: black;
+            padding-left: 1%;
+        }
+        #submit {
+            /* background: rgba(220, 220, 220, 0.1); */
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            background: rgba(0,0,0,0.8);
+            background-image: url('/images/landing/background_s.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-position: center;
+            filter: grayscale(50%) contrast(150%) opacity(30%);
+            -webkit-filter: grayscale(80%) contrast(150%) opacity(100%);
+        }
+        #submit li {
+            background: none;
+            /* padding-top: 0.6rem; */
+            line-height: 1.8;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        #register {
+            /* background: rgba(0, 0, 0, 0.1); */
+            padding-top: 3rem;
+            background: rgba(0,0,0,0.8);
+            background-image: url('/images/landing/background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-position: center;
+            filter: grayscale(50%) contrast(150%) opacity(30%);
+            -webkit-filter: grayscale(80%) contrast(150%) opacity(100%);
+        }
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+
+    <body>
+
+        <!-- Firebase authentication -->
+        <div id="firebaseui-auth-container" class="auth-dialog"></div>
+
+    <!-- navigation bar -->
+        <!-- data value of nav bar corresponds to id in each section -->
+        <nav class="navbar navbar-expand-lg fixed-top ">
+
+
+            <button class="navbar-toggler landing-page myCollapsedMenuBarIcon" id="myMenuBtn" type="button" data-toggle="collapse" data-target="#myMenu" aria-controls="myMenu" aria-expanded="false" aria-label="Toggle navigation" style="padding:0;border:none; width:1.5em;height:1.5em;" onclick="this.blur();">
+            </button>
+
+            <div class="collapse navbar-collapse" id="myMenu" style="width:100%;">
+                <ul class="navbar-nav mr-4" >
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/">NetNeurosci</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#landinggraph">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#program">Program</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#submit">Submit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#register">Register</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/videoconference/">Videoconference</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <span class="nav-link" id="loginStatus" style="border-bottom:none"><a style="color:white" href="#" onclick="signIn()">Add yourself to graph</a></span>
+                    </li>
+                    <li class="nav-item" id="userAvatar">
+                        <img class="userIcon"/>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="q-app">
+
+            <!-- part 1: Community network : Network Neuroscience community -->
+            <div id="community">
+                <div id="conftitle"><h1>Network Neuroscience</h1></div>
+
+
+                <div id="networkContainer">
+                    <div id="network"></div>
+                </div>
+
+
+                <q-spinner-ball
+                    color="white"
+                    size="4em"
+                    v-if="spinning"
+                    style="position:absolute;top:50%;left:50%;transform: translate( -50%, -50%);z-index:1000"
+                >
+                </q-spinner-ball>
+
+
+
+                <div class="container" style="margin-top: 0">
+
+                    <div v-cloak class="row">
+                        <!-- Person's card -->
+                        <div v-if="cardDisplayName !== userDisplayName">
+                            <q-dialog v-model="displayCard">
+                                <q-card style="height:400px;width:400px">
+                                    <q-card-section>
+                                        <q-chip>
+                                            <q-avatar round size="48px">
+                                                <img :src="`https://avatars3.githubusercontent.com/u/${cardUID}?v=4`" />
+                                            </q-avatar>
+                                            <a v-cloak class="col text-h6" :href="`https://github.com/${cardGitHubName}`">
+                                                {{cardDisplayName}}
+                                            </a>
+                                        </q-chip>
+                                    </q-card-section>
+                                    <q-card-section style="background: hsla(0,0%,100%,0.07);border-radius:4px 4px 0 0;margin:16px">
+                                        <q-chip v-cloak color="dark" v-for="skill in cardSkills">
+                                            {{skill}}
+                                        </q-chip>
+                                    </q-card-section>
+                                </q-card>
+                            </q-dialog>
+                        </div>
+                        <div v-else>
+                            <q-dialog v-model="displayCard" @hide="draw">
+                                <q-card style="height:400px;width:400px">
+                                    <q-card-section>
+                                        <q-chip>
+                                            <q-avatar round size="48px">
+                                                <img :src="`https://avatars3.githubusercontent.com/u/${uid}?v=4`" />
+                                            </q-avatar>
+                                            <a v-cloak class="col text-h6" :href="`https://github.com/${userGitHubName}`">
+                                                {{userDisplayName}}
+                                            </a>
+                                        </q-chip>
+                                    </q-card-section>
+                                    <q-card-section>
+                                        <q-select
+                                            label="Skills"
+                                            filled
+                                            v-model="people[people.map((o)=>o.uid).indexOf(uid)].skills"
+                                            use-input
+                                            use-chips
+                                            multiple
+                                            hide-dropdown-icon
+                                            input-debounce="0"
+                                            new-value-mode="add-unique"
+                                            :options="options"
+                                            @filter="filterFn"
+                                            @new-value="createValue"
+                                        ></q-select>
+                                    </q-card-section>
+                                </q-card>
+                            </q-dialog>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- </div> -->
+
+
+            <!-- part 1 landing network graph and about -->
+            <div v-cloak class="row" id="landinggraph">
+                <div v-cloak class="container" style="background: rgba(0,0,0,0.3);">
+                    <h4 style="padding-bottom:2rem;padding-top:1rem;">Satellite to the Networks 2021 Conference</h4>
+                    <div v-cloak class="row">
+
+                        <div v-cloak id="programTableContainer">
+                            <div v-cloak class="programTableDescription" style="margin-bottom:2rem;">
+                                <p>
+                                    The satellite will take place between June 28 and July 2, most likely on June 30 and July 1. The satellite is free and will be a completely virtual event. Please register for the <a href="https://networks2021.net">main conference</a> to attend the event. Please also <a href="#" onclick="signIn()">add yourself to the Network Neuroscience graph</a> to join our community as a part of the larger BrainWeb community. Once you logged in, your name should be an isolated dot flying around. Find it, click on it, and add your skills. That will start to create links with others, and you'll become part of the cluster of people sharing similar skills. Please add the "netneurosci" term to your skills to be part of the Network Neuroscience graph. You can learn more about others by clicking on their dots.
+                                    <br/>
+                                </p>
+                            </div>
+
+                        </div> <!--programTableContainer-->
+
+                    </div> <!--row of landinggraph section-->
+
+                </div> <!--container of landinggraph section-->
+
+            </div> <!--landinggraph div-->
+
+
+
+            <!-- part 2 Program -->
+            <div v-cloak class="row" id="program">
+                <div v-cloak class="container">
+                    <h4 style="padding-bottom:2rem;">Program</h4>
+                    <div v-cloak class="row">
+
+                        <div id="programTableContainer">
+                            <div class="programTableHeader">
+                                <h5 style="font-weight:900;">Preliminary dates: June 30 & July 1</h5><br/><br/>
+                            </div>
+                            <div class="textparagraph">
+                                <p>
+                                    The Network Neuroscience satellite will take place between June 28 and July 2, with the most likely dates June 30/July 1. It will be held over 2 days to accommodate for different time zones for the 8-hour conference schedule: the first during US PM time, and the second during the US morning time. The poster session will happen at the end of the conference to allow participants to remain engaged in discussions as long as they wish (midday EST, morning west coast, afternoon europe, late night pacific).<br>
+                                </p>
+                            </div>
+                            <div class="programTableHeader">
+                                <h5 style="font-weight:900;padding-top: 2rem; padding-bottom: 0rem;">Preliminary schedule</h5><br/><br/>
+                            </div>
+                            <div id="programTableDays">
+                                <div id="programDay1">
+
+                                    <div class="programDayHeader">
+                                        <p><b>Day 1. Preliminary time 12:30 PM–4:30 PM EST</b></p>
+                                    </div> <!--programDay-->
+
+                                    <div class="programSessionsEmpty">
+                                        <!-- <div><p>empty</p></div> -->
+                                    </div> <!--programSessions-->
+
+                                    <div class="programSessions">
+                                        <p><b>Session 1: From Networks to Brain</b></p>
+                                    </div> <!--programSessions-->
+
+                                    <div class="programTableContentUneven">
+                                        <div class="programTableItems">Invited Talk</div>
+                                        <div class="programTableItems">Mariangeles Serrano</div>
+                                    </div> <!--programTableContentUneven-->
+
+                                    <div class="programTableContentEven">
+                                        <div class="programTableItems">Contributed Talks</div>
+                                        <div class="programTableItems">Will be announced shortly</div>
+                                    </div> <!--programTableContentEven-->
+
+                                    <div class="programSessions">
+                                        <p><b>Session 2: From Brain to Networks</b></p>
+                                    </div> <!--programSessions-->
+
+                                    <div class="programTableContentUneven">
+                                        <div class="programTableItems">Invited Talk</div>
+                                        <div class="programTableItems">Plamen Ivanov</div>
+                                    </div> <!--programTableContentUneven-->
+
+                                    <div class="programTableContentEven">
+                                        <div class="programTableItems">Contributed Talks</div>
+                                        <div class="programTableItems">Will be announced shortly</div>
+                                    </div> <!--programTableContentEven-->
+
+                                    <div class="programSessions">
+                                        <p><b>Session 3: Special Keynote</b></p>
+                                    </div> <!--programSessions-->
+
+                                    <div class="programTableContentUneven">
+                                        <div class="programTableItems">Carolyn Parkinson</div>
+                                        <div class="programTableItems"></div>
+                                    </div> <!--programTableContentUneven-->
+
+                                    <div class="programSessions">
+                                        <p><b>Session 4: Panel/Open Discussion</b></p>
+                                    </div> <!--programSessions-->
+
+                                </div> <!--programDay1-->
+
+
+                                <div id="programDay2">
+
+                                    <div class="programDayHeader">
+                                        <p><b>Day 2. Preliminary time 8:30 AM–12:30 PM EST</b></p>
+                                    </div>
+
+                                    <div class="programSessions">
+                                        <p><b>Session 1: Networks and Brain Disorders</b></p>
+                                    </div> <!--programSessions-->
+
+                                    <div class="programTableContentUneven">
+                                        <div class="programTableItems">Invited Talk</div>
+                                        <div class="programTableItems">Maurizio Corbetta</div>
+                                    </div> <!--programTableContentUneven-->
+
+                                    <div class="programTableContentEven">
+                                        <div class="programTableItems">Contributed Talks</div>
+                                        <div class="programTableItems">Will be announced shortly</div>
+                                    </div> <!--programTableContentEven-->
+
+                                    <div class="programSessions">
+                                        <p><b>Session 2: Frontiers in Computational Methods and Models</b></p>
+                                    </div> <!--programSessions-->
+
+                                    <div class="programTableContentUneven">
+                                        <div class="programTableItems">Invited Talk</div>
+                                        <div class="programTableItems">Dimitri Van De Ville</div>
+                                    </div> <!--programTableContentUneven-->
+
+                                    <div class="programTableContentEven">
+                                        <div class="programTableItems">Contributed Talks</div>
+                                        <div class="programTableItems">Will be announced shortly</div>
+                                    </div> <!--programTableContentEven-->
+
+                                    <div class="programSessions">
+                                        <p><b>Session 3: Poster session</b></p>
+                                    </div> <!--programSessions-->
+
+                                    <div class="programSessions"><!--placeholder session 4-->
+                                        <p><b><br/></b></p>
+                                    </div> <!--programSessions-->
+
+                                    <div class="programSessionsEmpty">
+                                    </div> <!--programSessionsEmpty-->
+
+                                </div> <!--programDay2-->
+
+                            </div> <!--programTableDays-->
+
+
+                            <div class="programTableHeader">
+                                <h5 style="font-weight:900; padding-top: 3rem;">Posters & Oral presentations</h5><br/><br/>
+                            </div>
+                            <div class="textparagraph">
+                                <p>
+                                    The 2021 Network Neuroscience Satellite will include a number of poster and oral presentations contributed by submission. For the poster sessions we are working to provide a friendly, robust, and inclusive platform to maximize the quality of the interactions. If you would like to present your work, please, follow this link to <a href=https://easychair.org/conferences/?conf=netneuro2021> Easychair</a>, select the type of contribution and submit your abstract by April 9th. Detailed information can be found <a href="#submit">below.</a><br>
+                                </p>
+                            </div>
+
+                        </div> <!--programTableContainer-->
+
+                    </div> <!--row of program section-->
+
+                </div> <!--container of program section-->
+
+            </div> <!--program-->
+
+
+
+            <!-- part 3 Submit -->
+            <div v-cloak class="row" id="submit">
+                <div v-cloak class="container" style="background: rgba(0,0,0,0.3);">
+                    <h4 style="padding-bottom:2rem;padding-top:1rem;">Submit your abstract</h4>
+                    <div v-cloak class="row">
+
+                        <div id="programTableContainer">
+                            <div class="programTableDescription" style="padding-bottom:1rem;">
+                                <p>
+                                    Abstracts should be in pdf format and no longer than 1 page (about 500 words). Please note that we have only a limited number of slots available for oral presentations, and encourage you to consider submitting your work as a poster. We will be holding a dedicated session for the posters. <br/>
+                                    Oral presentations will be selected by the program committee and added to our website as <b>Contributed Talks</b>. Presentations are planned for 15 minutes each. <br/>
+                                    If you would like to present your work, please, follow this link to <a href=https://easychair.org/conferences/?conf=netneuro2021> Easychair</a>, select the type of contribution and submit your abstract by April 9th. 
+                                </p>
+                                <p>
+                                    We welcome submissions from all areas of Network Neuroscience, including (but not limited to): <br/>
+                                        <li>Brain transcriptional and gene regulation networks;</li>
+                                        <li>Structural brain networks;</li>
+                                        <li>Functional brain networks;</li>
+                                        <li>Network theory, modeling and analysis;</li>
+                                        <li>Network communication and information flow;</li>
+                                        <li>Circuit dynamics;</li>
+                                        <li>Brain-behavior interactions;</li>
+                                        <li>Systems neuroscience;</li>
+                                        <li>Clinical applications.</li>
+                                </p>
+                            </div>
+
+                        </div> <!--programTableContainer-->
+
+                    </div> <!--row of submission section-->
+
+                </div> <!--container of submission section-->
+
+            </div> <!--submission div-->
+
+
+
+            <!-- part 4 Register -->
+            <div v-cloak class="row" id="register">
+                <div v-cloak class="container" style="background: rgba(0,0,0,0.3);">
+                    <h4 style="padding-bottom:2rem;padding-top:1rem;">Register</h4>
+                    <div v-cloak class="row">
+
+                        <div id="programTableContainer">
+                            <div class="programTableDescription" style="margin-bottom:2rem;">
+                                <p>
+                                    The satellite is free and will be a completely virtual event. Please register for the <a href="https://networks2021.net">main conference</a> to attend the event.
+                                </p>
+                                <p>
+                                    Please also <a href="#" onclick="signIn()">add yourself to the Network Neuroscience graph</a> to join our community as a part of the larger BrainWeb community. Once you logged in, your name should be an isolated dot flying around. Find it, click on it, and add your skills. That will
+                                    start to create links with others, and you'll become part of the cluster of people sharing similar skills. Please add the "netneurosci" term to your skills to be part of the Network Neuroscience graph. You can learn more about others by clicking on their dots.
+                                    <br><br>
+                                </p>
+                            </div>
+
+                        </div> <!--programTableContainer-->
+
+                    </div> <!--row of registration section-->
+
+                </div> <!--container of registration section-->
+
+
+
+
+                <!-- footer -->
+                <div class="row" id="CoC" style="width:100%; height:40px; position:relative; bottom:0px; margin:0;padding:0;border:0; color:white; background:#111111;">
+                    <p style="font-size:14px;position:absolute;left:50%;transform: translate(-50%,0%);">Made with love &nbsp; ❤ &nbsp; Please respect the <a href="https://github.com/netneurosci/networks2021staellite.io/blob/master/CoC.md" target="_blank">NetNeurosci Code of Conduct.</a></p>
+                </div>
+
+            </div> <!--registration div-->
+
+
+
+
+        </div> <!--q-app-->
+
+
+
+
+
+        <script src="/js/sentry.min.js" data-lazy="no"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- <script src="/js/main.js"></script> -->
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@^2.0.0/dist/vue.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/quasar@1.9.10/dist/quasar.umd.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/quasar@1.9.10/dist/icon-set/svg-material-icons.umd.min.js"></script>
+
+        <script defer src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css" />
+        <script defer src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
+        <script defer src="/js/init-firebase.js"></script>
+
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="/community/brainweb.js"></script>
+        
+        <script type="module">
+            const circleName = "BrainWeb";
+            const skills = [];
+
+            function arr2dic(arr) {
+                const dic = {};
+                for(let item of arr) {
+                    const {uid} = item;
+                    dic[uid] = {}
+                    for(let key of Object.keys(item)) {
+                        if(key !== "uid") {
+                            dic[uid][key] = item[key];
+                        }
+                    }
+                }
+                return dic;
+            }
+
+            function dic2arr(dic) {
+                const arr = [];
+                for(let uid of Object.keys(dic)) {
+                    const item = {uid};
+                    for(let key of Object.keys(dic[uid])) {
+                        if(key!==uid) {
+                            item[key] = dic[uid][key];
+                        }
+                    }
+                    arr.push(item);
+                }
+                return arr;
+            }
+
+            /** filter obj to include only entries where skills contain tag */
+            function filter(obj, tags) {
+              const result = {};
+              for(const key of Object.keys(obj)) {
+                if(typeof obj[key].skills === "undefined") {
+                  continue;
+                }
+                let tagPresent = false;
+                for(const tag of tags.map((o)=>{return o.toLowerCase()})) {
+                  if(obj[key].skills.map((o)=>{return o.toLowerCase()}).indexOf(tag)>=0) {
+                    tagPresent = true;
+                    break;
+                  }
+                }
+                if(tagPresent) {
+                    result[key] = obj[key];
+                }
+              }
+              return result;
+            }
+
+            function update(databaseDic) {
+                if(app.uid === null) {
+                    return;
+                }
+
+                const { uid } = app;
+                const str = databaseDic[uid];
+                const obj = {};
+                obj[uid] = str;
+                firebase.database().ref(`circles/${circleName}`)
+                    .update(obj)
+                    .then(function(snapshot) {
+                        console.log('update: success');
+                    }, function(error) {
+                        Sentry.captureException(error);
+                        console.log('update: error', error);
+                    });
+            }
+
+            function listen() {
+                var circles = firebase.database().ref(`circles/${circleName}`);
+                circles.on('value', async (s) => {
+                    var circle = s.val();
+                    if(circle === null) {
+                        return;
+                    }
+                    circle = filter(circle, ["graph theory","netneurosci"]);
+                    const circleLength = Object.keys(circle).length;
+                    if(circleLength > 15) {
+
+                        databaseDicToPeopleArr(circle);
+                        addCurrentUser();
+                        await addBrainWebToElement("#network", app.people, app.userDisplayName, (user) => {
+                            app.displayCard = true;
+                            app.cardDisplayName = app.people[user.index].displayname;
+                            app.cardGitHubName = app.people[user.index].username;
+                            app.cardUID = app.people[user.index].uid;
+                            app.cardSkills = app.people[user.index].skills;
+                        });
+                    } else {
+                      console.log("Graph too small to proceed", circleLength);
+                    }
+                    app.spinning = false;
+                });
+            }
+
+            function databaseDicToPeopleArr(databaseDic) {
+                const oldPeople = app.people;
+
+                const incomingPeopleDic = databaseDic;
+                const incomingPeopleArr = dic2arr(incomingPeopleDic);
+                const newPeople = incomingPeopleArr.filter((person) => {
+                    const oldUIDs = oldPeople.map((o)=> o.uid);
+                    const includes = !(oldUIDs.includes(person.uid));
+                    return includes;
+                });
+                for(let p of newPeople) {
+                    if(typeof p.skills === "undefined") {
+                        p.skills = [];
+                    }
+                    if(typeof p.displayname === "undefined") {
+                        p.displayname = p.username;
+                    }
+                    for(let s of p.skills) {
+                        if(!skills.includes(s)) {
+                            skills.push(s);
+                        }
+                    }
+                    app.people.push(p);
+                }
+            }
+
+            function peopleArrToDatabaseDic(peopleArr) {
+                const arr = [];
+                for(let p of peopleArr) {
+                    arr.push(JSON.parse(JSON.stringify(p)));
+                }
+                const dic = arr2dic(peopleArr)
+                update(dic);
+            }
+
+            /**
+             * fetch user information given the GitHub user id number
+             */
+            async function fetchUserInfoFromGitHub(uid) {
+                let json, res;
+                try {
+                    res = await fetch(`https://api.github.com/users/${uid}`);
+                    json = await res.json();
+                } catch (err) {
+                    throw new Error(err);
+                }
+                return json;
+            }
+
+            async function addCurrentUser() {
+                if(app.uid === null) {
+                    return;
+                }
+
+                const index = app.people.map((o)=>o.uid).indexOf(app.uid);
+
+                let isNewUser = (index === -1);
+                let isUserWithoutDisplayName = (typeof app.userDisplayName === "undefined");
+                if (isNewUser || isUserWithoutDisplayName) {
+                    const {login} = await fetchUserInfoFromGitHub(app.uid);
+                    const userDisplayName = app.userDisplayName || login;
+                    app.userDisplayName = userDisplayName;
+                    app.userGitHubName = login;
+                    if (isNewUser) {
+                        app.people.push({
+                            displayname: userDisplayName,
+                            username: login,
+                            uid: app.uid,
+                            skills: []
+                        });
+                    }
+                    document.getElementById("loginStatus").innerHTML = `${userDisplayName} (<a style="color:white" href="#" onclick="signOut()">Sign Out</a>)`;
+                    peopleArrToDatabaseDic(app.people);
+                } else {
+                    app.userGitHubName = app.people[index].username;
+                }
+            }
+
+            Quasar.Dark.set(true);
+
+            const app = window.app = new Vue({
+                el: '#q-app',
+                data () {
+                    return {
+                        people: [],
+                        spinning: true,
+                        options: skills,
+                        userSignedIn: false,
+                        uid: null,
+                        userDisplayName: null,
+                        userGitHubName: "",
+                        userPicture: null,
+                        displayCard: false,
+                        cardDisplayName: "",
+                        cardGitHubName: "",
+                        cardUID: "",
+                        cardSkills: []
+                    }
+                },
+                methods: {
+                    filterFn (val, update, abort) {
+                        update(() => {
+                            const needle = val.toLowerCase()
+                            this.options = skills.filter(v => v.toLowerCase().indexOf(needle) > -1)
+                        })
+                    },
+                    createValue (val, done) {
+                        skills.push(val)
+                        done(val)
+                    },
+                    deletePerson (e, index) {
+                        this.people.splice(index,1)
+                        event.stopPropagation()
+                    },
+                    draw (e) {
+                        app.spinning = true;
+                        peopleArrToDatabaseDic(this.people);
+                    },
+                    goTo (url) {
+                        window.location = url
+                    }
+                }
+            });
+            window.addEventListener('load', () => {
+                listen()
+            })
+        </script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- to do : add gtag -->
+
+    </body>
+</html>
