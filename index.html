@@ -92,17 +92,28 @@
             font-weight: 600;
         }
 
+        /* first page container */
         #community {
             display:flex;
             flex-direction: column;
             width: 100%;
             /* justify-content: space-around;
             align-items: center; */
+            /* background-image: url("./images/landing/networkgraph_bg.jpg"); */
         }
         #conftitle h1 {
+            font-family: 'Roboto', sans-serif !important;
+            line-height: 1.2 !important;
+            letter-spacing: normal;
+            font-size: 4.8rem;
+            font-weight: 900;
+            opacity: 1.0;
+        }
+        #conftitle {
             position:absolute;
             top:10%;
             left:5%!important;
+            flex: 0 1 100%;
             /* transform: translate( -50%, -50%); */
             font-family: 'Roboto', sans-serif !important;
             line-height: 1.2 !important;
@@ -113,22 +124,22 @@
             background: none!important;
             z-index:51;
         }
-        #conftitle {
-            flex: 1 1 100%;
-        }
         #networkContainer {
+            position: relative;
             flex: 1 1 100%;
+            height: 100%;
         }
         #network {
             z-index: 50;
-            /* position: fixed; */
             position: relative;
+            bottom: 0px;
+            right: 0px;
+            flex: 1 1 100%;
             /* width: 100%; */
             height: 100%;
+            /* min-height: 700px; */
             top: 0;
             bottom:0;
-            flex: 1 1 100%;
-            /* display: flex; */
             background-image: url("./images/landing/networkgraph_bg.jpg");
             background-size: cover;
             -webkit-background-size: cover;
@@ -443,7 +454,9 @@
 
             <!-- part 1: Community network : Network Neuroscience community -->
             <div id="community">
-                <div id="conftitle"><h1>Network Neuroscience</h1></div>
+                <div id="conftitle">
+                    <h1>Network Neuroscience</h1>
+                </div>
 
 
                 <div id="networkContainer">
