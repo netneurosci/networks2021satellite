@@ -134,9 +134,10 @@
             position: relative;
             bottom: 0px;
             right: 0px;
+            display: flex;
             flex: 1 1 100%;
             /* width: 100%; */
-            height: 100%;
+            height: 100vh;
             /* min-height: 700px; */
             top: 0;
             bottom:0;
@@ -150,6 +151,7 @@
         #network svg {
             width: 100%;
             flex-grow: 1;
+            margin-top: 10vh;
         }
 
         @keyframes shinebrightlikeadiamond {
@@ -168,7 +170,7 @@
         }
         #network svg .name {
             fill: rgb(255,255,255,0.3);
-            font-size: 8px;
+            font-size: 1em;
         }
         #network svg circle:hover + .name{
             fill: rgb(255,255,255,1);
@@ -384,7 +386,7 @@
             background: none;
             /* padding-top: 0.6rem; */
             line-height: 1.8;
-            font-size: 1rem;
+            font-size: 2rem;
             font-weight: 300;
         }
         #register {
@@ -596,13 +598,13 @@
                                     </div> <!--programSessions-->
 
                                     <div class="programTableContentUneven">
-                                        <div class="programTableItems">Invited Talk</div>
-                                        <div class="programTableItems">Mariangeles Serrano</div>
+                                        <div class="programTableItems"><p>Invited Talk</div>
+                                        <div class="programTableItems"><p>Mariangeles Serrano</p></div>
                                     </div> <!--programTableContentUneven-->
 
                                     <div class="programTableContentEven">
-                                        <div class="programTableItems">Contributed Talks</div>
-                                        <div class="programTableItems">Will be announced shortly</div>
+                                        <div class="programTableItems"><p>Contributed Talks</p></div>
+                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
                                     </div> <!--programTableContentEven-->
 
                                     <div class="programSessions">
@@ -610,13 +612,13 @@
                                     </div> <!--programSessions-->
 
                                     <div class="programTableContentUneven">
-                                        <div class="programTableItems">Invited Talk</div>
-                                        <div class="programTableItems">Plamen Ivanov</div>
+                                        <div class="programTableItems"><p>Invited Talk</p></div>
+                                        <div class="programTableItems"><p>Plamen Ivanov</p></div>
                                     </div> <!--programTableContentUneven-->
 
                                     <div class="programTableContentEven">
-                                        <div class="programTableItems">Contributed Talks</div>
-                                        <div class="programTableItems">Will be announced shortly</div>
+                                        <div class="programTableItems"><p>Contributed Talks</p></div>
+                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
                                     </div> <!--programTableContentEven-->
 
                                     <div class="programSessions">
@@ -624,8 +626,8 @@
                                     </div> <!--programSessions-->
 
                                     <div class="programTableContentUneven">
-                                        <div class="programTableItems">Carolyn Parkinson</div>
-                                        <div class="programTableItems"></div>
+                                        <div class="programTableItems"><p>Carolyn Parkinson</div>
+                                        <div class="programTableItems"><p></p></div>
                                     </div> <!--programTableContentUneven-->
 
                                     <div class="programSessions">
@@ -646,13 +648,13 @@
                                     </div> <!--programSessions-->
 
                                     <div class="programTableContentUneven">
-                                        <div class="programTableItems">Invited Talk</div>
-                                        <div class="programTableItems">Maurizio Corbetta</div>
+                                        <div class="programTableItems"><p>Invited Talk</p></div>
+                                        <div class="programTableItems"><p>Maurizio Corbetta</p></div>
                                     </div> <!--programTableContentUneven-->
 
                                     <div class="programTableContentEven">
-                                        <div class="programTableItems">Contributed Talks</div>
-                                        <div class="programTableItems">Will be announced shortly</div>
+                                        <div class="programTableItems"><p>Contributed Talks</p></div>
+                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
                                     </div> <!--programTableContentEven-->
 
                                     <div class="programSessions">
@@ -660,13 +662,13 @@
                                     </div> <!--programSessions-->
 
                                     <div class="programTableContentUneven">
-                                        <div class="programTableItems">Invited Talk</div>
-                                        <div class="programTableItems">Dimitri Van De Ville</div>
+                                        <div class="programTableItems"><p>Invited Talk</p></div>
+                                        <div class="programTableItems"><p>Dimitri Van De Ville</p></div>
                                     </div> <!--programTableContentUneven-->
 
                                     <div class="programTableContentEven">
-                                        <div class="programTableItems">Contributed Talks</div>
-                                        <div class="programTableItems">Will be announced shortly</div>
+                                        <div class="programTableItems"><p>Contributed Talks</p></div>
+                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
                                     </div> <!--programTableContentEven-->
 
                                     <div class="programSessions">
@@ -769,8 +771,8 @@
 
 
                 <!-- footer -->
-                <div class="row" id="CoC" style="width:100%; height:40px; position:relative; bottom:0px; margin:0;padding:0;border:0; color:white; background:#111111;">
-                    <p style="font-size:14px;position:absolute;left:50%;transform: translate(-50%,0%);">Made with love &nbsp; ❤ &nbsp; Please respect the <a href="https://github.com/netneurosci/networks2021staellite.io/blob/master/CoC.md" target="_blank">NetNeurosci Code of Conduct.</a></p>
+                <div class="row" id="CoC" style="width:100%; position:relative; bottom:0px; margin:0;padding:0;border:0; color:white; background:#111111;">
+                    <p style="text-align: center; font-size: 1.4rem; width: 100%">Made with love &nbsp; ❤ &nbsp; Please respect the <a href="https://github.com/netneurosci/networks2021staellite.io/blob/master/CoC.md" target="_blank">NetNeurosci Code of Conduct.</a></p>
                 </div>
 
             </div> <!--registration div-->
@@ -981,7 +983,7 @@
                 }
             }
 
-            Quasar.Dark.set(true);
+            // Quasar.Dark.set(true);
 
             const app = window.app = new Vue({
                 el: '#q-app',

@@ -27,10 +27,10 @@ self.onmessage = message => {
 
 function addBrainWebToElementWorkerFn(people, loggedDisplayName){
   const names = people.map(o=>o.displayname);
-  const width = 800;
+  const width = 400;
   const height = 400;
-  const radius = 3;
-  const Z = 75;
+  const radius = 5;
+  const Z = 80;
   
   const fullNetwork = peopleArrToNetwork(people);
   const matrix = networkToSkillsMatrix(fullNetwork, people);
