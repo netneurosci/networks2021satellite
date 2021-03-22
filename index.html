@@ -478,7 +478,7 @@
 
                 <div class="container" style="margin-top: 0">
 
-                    <div v-cloak class="row">
+                    <div v-cloak v-if="!spinning" class="row">
                         <!-- Person's card -->
                         <div v-if="cardDisplayName !== userDisplayName">
                             <q-dialog v-model="displayCard">
@@ -488,13 +488,13 @@
                                             <q-avatar round size="48px">
                                                 <img :src="`https://avatars3.githubusercontent.com/u/${cardUID}?v=4`" />
                                             </q-avatar>
-                                            <a v-cloak class="col text-h6" :href="`https://github.com/${cardGitHubName}`">
+                                            <a v-cloak v-if="!spinning" class="col text-h6" :href="`https://github.com/${cardGitHubName}`">
                                                 {{cardDisplayName}}
                                             </a>
                                         </q-chip>
                                     </q-card-section>
                                     <q-card-section style="background: hsla(0,0%,100%,0.07);border-radius:4px 4px 0 0;margin:16px">
-                                        <q-chip v-cloak color="dark" v-for="skill in cardSkills">
+                                        <q-chip v-cloak v-if="!spinning" color="dark" v-for="skill in cardSkills">
                                             {{skill}}
                                         </q-chip>
                                     </q-card-section>
@@ -509,7 +509,7 @@
                                             <q-avatar round size="48px">
                                                 <img :src="`https://avatars3.githubusercontent.com/u/${uid}?v=4`" />
                                             </q-avatar>
-                                            <a v-cloak class="col text-h6" :href="`https://github.com/${userGitHubName}`">
+                                            <a v-cloak v-if="!spinning" class="col text-h6" :href="`https://github.com/${userGitHubName}`">
                                                 {{userDisplayName}}
                                             </a>
                                         </q-chip>
@@ -541,13 +541,13 @@
 
 
             <!-- part 1 landing network graph and about -->
-            <div v-cloak class="row" id="landinggraph">
-                <div v-cloak class="container" style="background: rgba(0,0,0,0.3);">
+            <div v-cloak v-if="!spinning" class="row" id="landinggraph">
+                <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
                     <h4 style="padding-bottom:2rem;padding-top:1rem;">Satellite to the Networks 2021 Conference</h4>
-                    <div v-cloak class="row">
+                    <div v-cloak v-if="!spinning" class="row">
 
-                        <div v-cloak id="programTableContainer">
-                            <div v-cloak class="programTableDescription" style="margin-bottom:2rem;">
+                        <div v-cloak v-if="!spinning" id="programTableContainer">
+                            <div v-cloak v-if="!spinning" class="programTableDescription" style="margin-bottom:2rem;">
                                 <p>
                                     The satellite will take place between June 28 and July 2, most likely on June 30 and July 1. The satellite is free and will be a completely virtual event. Please register for the <a href="https://networks2021.net">main conference</a> to attend the event. Please also <a href="#" onclick="signIn()">add yourself to the Network Neuroscience graph</a> to join our community as a part of the larger BrainWeb community. Once you logged in, your name should be an isolated dot flying around. Find it, click on it, and add your skills. That will start to create links with others, and you'll become part of the cluster of people sharing similar skills. Please add the "netneurosci" term to your skills to be part of the Network Neuroscience graph. You can learn more about others by clicking on their dots.
                                     <br/>
@@ -565,10 +565,10 @@
 
 
             <!-- part 2 Program -->
-            <div v-cloak class="row" id="program">
-                <div v-cloak class="container">
+            <div v-cloak v-if="!spinning" class="row" id="program">
+                <div v-cloak v-if="!spinning" class="container">
                     <h4 style="padding-bottom:2rem;">Program</h4>
-                    <div v-cloak class="row">
+                    <div v-cloak v-if="!spinning" class="row">
 
                         <div id="programTableContainer">
                             <div class="programTableHeader">
@@ -707,10 +707,10 @@
 
 
             <!-- part 3 Submit -->
-            <div v-cloak class="row" id="submit">
-                <div v-cloak class="container" style="background: rgba(0,0,0,0.3);">
+            <div v-cloak v-if="!spinning" class="row" id="submit">
+                <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
                     <h4 style="padding-bottom:2rem;padding-top:1rem;">Submit your abstract</h4>
-                    <div v-cloak class="row">
+                    <div v-cloak v-if="!spinning" class="row">
 
                         <div id="programTableContainer">
                             <div class="programTableDescription" style="padding-bottom:1rem;">
@@ -744,10 +744,10 @@
 
 
             <!-- part 4 Register -->
-            <div v-cloak class="row" id="register">
-                <div v-cloak class="container" style="background: rgba(0,0,0,0.3);">
+            <div v-cloak v-if="!spinning" class="row" id="register">
+                <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
                     <h4 style="padding-bottom:2rem;padding-top:1rem;">Register</h4>
-                    <div v-cloak class="row">
+                    <div v-cloak v-if="!spinning" class="row">
 
                         <div id="programTableContainer">
                             <div class="programTableDescription" style="margin-bottom:2rem;">
