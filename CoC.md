@@ -1,4 +1,4 @@
-# *CODE OF CONDUCT*
+# CODE OF CONDUCT
 
 Network Neuroscience is dedicated to providing a welcoming and harassment-free experience for everyone, regardless of gender, gender identity and expression, sexual orientation, social class and background, disability, physical appearance, body size, race, age, religion, nationality, or the presence of or care for dependents. We do not tolerate harassment of conference participants in any form. Event participants violating these rules may be sanctioned or expelled from the event at the discretion of the event organisers.
 
