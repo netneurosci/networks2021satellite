@@ -72,7 +72,7 @@
         #program p {
             width: 100%;
             position:relative;
-            padding-top: 0.6rem;
+            margin: 0.3rem 0;
             /* background-image: linear-gradient(rgba(20,20,20,0), rgba(20,20,20,0.5), rgba(20,20,20,0.75), rgba(20,20,20,0.5),rgba(20,20,20,0)); */
             line-height: 1.8;
             font-weight: 300;
@@ -105,7 +105,7 @@
             font-family: 'Roboto', sans-serif !important;
             line-height: 1.2 !important;
             letter-spacing: normal;
-            font-size: 4.8rem;
+            font-size: 6.8rem;
             font-weight: 900;
             opacity: 1.0;
         }
@@ -202,7 +202,7 @@
         }
         #landinggraph {
             padding-top: 3rem;
-            padding-bottom: 3rem;
+            padding-bottom: 6rem;
             background: rgba(0,0,0,0.8);
             background-image: url('./images/landing/background_s.jpg');
             background-repeat: no-repeat;
@@ -225,8 +225,7 @@
 
         #program {
             /* background: rgba(30,0,0,0.5); */
-            padding-top: 3rem;
-            padding-bottom: 2rem;
+            padding-bottom: 6rem;
             background-color: rgba(0,0,0,0.0);
             /* background: rgba(0,0,0,0.8); */
             background-image: url('./images/landing/background.jpg');
@@ -239,6 +238,10 @@
             background-position: center;
             filter: grayscale(50%) contrast(150%) opacity(30%);
             -webkit-filter: grayscale(80%) contrast(150%) opacity(100%);
+        }
+        #program .container {
+            padding-left: 0;
+            padding-right: 0;
         }
         #programTableContainer {
             width: 100%;
@@ -305,7 +308,7 @@
             flex-direction: row;
             width: 100%;
             position: relative;
-            height: 23rem;
+            height: 0;
             background: rgba(255,255,255,0.1);
         }
         /* .programSessions {
@@ -368,8 +371,8 @@
         }
         #submit {
             /* background: rgba(220, 220, 220, 0.1); */
-            padding-top: 3rem;
-            padding-bottom: 3rem;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
             background: rgba(0,0,0,0.8);
             background-image: url('./images/landing/background_s.jpg');
             background-repeat: no-repeat;
@@ -391,7 +394,7 @@
         }
         #register {
             /* background: rgba(0, 0, 0, 0.1); */
-            padding-top: 3rem;
+            padding-top: 6rem;
             background: rgba(0,0,0,0.8);
             background-image: url('./images/landing/background.jpg');
             background-repeat: no-repeat;
@@ -543,7 +546,7 @@
             <!-- part 1 landing network graph and about -->
             <div v-cloak v-if="!spinning" class="row" id="landinggraph">
                 <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
-                    <h4 style="padding-bottom:2rem;padding-top:1rem;">Satellite to the Networks 2021 Conference</h4>
+                    <h4>Satellite to the Networks 2021 Conference</h4>
                     <div v-cloak v-if="!spinning" class="row">
 
                         <div v-cloak v-if="!spinning" id="programTableContainer">
@@ -565,14 +568,14 @@
 
 
             <!-- part 2 Program -->
-            <div v-cloak v-if="!spinning" class="row" id="program">
+            <div v-cloak v-if="!spinning" id="program" class="row">
                 <div v-cloak v-if="!spinning" class="container">
-                    <h4 style="padding-bottom:2rem;">Program</h4>
+                    <h4>Program</h4>
                     <div v-cloak v-if="!spinning" class="row">
 
                         <div id="programTableContainer">
                             <div class="programTableHeader">
-                                <h5 style="font-weight:900;">Preliminary dates: June 30 & July 1</h5><br/><br/>
+                                <h5>Preliminary dates: June 30 & July 1</h5>
                             </div>
                             <div class="textparagraph">
                                 <p>
@@ -580,7 +583,7 @@
                                 </p>
                             </div>
                             <div class="programTableHeader">
-                                <h5 style="font-weight:900;padding-top: 2rem; padding-bottom: 0rem;">Preliminary schedule</h5><br/><br/>
+                                <h5>Preliminary schedule</h5>
                             </div>
                             <div id="programTableDays">
                                 <div id="programDay1">
@@ -588,6 +591,8 @@
                                     <div class="programDayHeader">
                                         <p><b>Day 1. Preliminary time 12:30 PM–4:30 PM EST</b></p>
                                     </div> <!--programDay-->
+
+                                    <div id="programDay1Before" style="visibility: hidden;"></div>
 
                                     <div class="programSessionsEmpty">
                                         <!-- <div><p>empty</p></div> -->
@@ -676,11 +681,12 @@
                                     </div> <!--programSessions-->
 
                                     <div class="programSessions"><!--placeholder session 4-->
-                                        <p><b><br/></b></p>
                                     </div> <!--programSessions-->
 
                                     <div class="programSessionsEmpty">
                                     </div> <!--programSessionsEmpty-->
+
+                                    <div id="programDay2After" style="visibility: hidden;"></div>
 
                                 </div> <!--programDay2-->
 
@@ -688,7 +694,7 @@
 
 
                             <div class="programTableHeader">
-                                <h5 style="font-weight:900; padding-top: 3rem;">Posters & Oral presentations</h5><br/><br/>
+                                <h5 style="padding-top: 6rem;">Posters & Oral presentations</h5><br/><br/>
                             </div>
                             <div class="textparagraph">
                                 <p>
@@ -709,18 +715,19 @@
             <!-- part 3 Submit -->
             <div v-cloak v-if="!spinning" class="row" id="submit">
                 <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
-                    <h4 style="padding-bottom:2rem;padding-top:1rem;">Submit your abstract</h4>
+                    <h4>Submit your abstract</h4>
                     <div v-cloak v-if="!spinning" class="row">
 
                         <div id="programTableContainer">
-                            <div class="programTableDescription" style="padding-bottom:1rem;">
+                            <div class="programTableDescription" style="padding-bottom:2rem;">
                                 <p>
                                     Abstracts should be in pdf format and no longer than 1 page (about 500 words). Please note that we have only a limited number of slots available for oral presentations, and encourage you to consider submitting your work as a poster. We will be holding a dedicated session for the posters. <br/>
                                     Oral presentations will be selected by the program committee and added to our website as <b>Contributed Talks</b>. Presentations are planned for 15 minutes each. <br/>
                                     If you would like to present your work, please, follow this link to <a href=https://easychair.org/conferences/?conf=netneuro2021> Easychair</a>, select the type of contribution and submit your abstract by April 9th. 
                                 </p>
                                 <p>
-                                    We welcome submissions from all areas of Network Neuroscience, including (but not limited to): <br/>
+                                    We welcome submissions from all areas of Network Neuroscience, including (but not limited to):
+                                    <ul>
                                         <li>Brain transcriptional and gene regulation networks;</li>
                                         <li>Structural brain networks;</li>
                                         <li>Functional brain networks;</li>
@@ -730,6 +737,7 @@
                                         <li>Brain-behavior interactions;</li>
                                         <li>Systems neuroscience;</li>
                                         <li>Clinical applications.</li>
+                                    </ul>
                                 </p>
                             </div>
 
@@ -746,7 +754,7 @@
             <!-- part 4 Register -->
             <div v-cloak v-if="!spinning" class="row" id="register">
                 <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
-                    <h4 style="padding-bottom:2rem;padding-top:1rem;">Register</h4>
+                    <h4>Register</h4>
                     <div v-cloak v-if="!spinning" class="row">
 
                         <div id="programTableContainer">
@@ -757,7 +765,6 @@
                                 <p>
                                     Please also <a href="#" onclick="signIn()">add yourself to the Network Neuroscience graph</a> to join our community as a part of the larger BrainWeb community. Once you logged in, your name should be an isolated dot flying around. Find it, click on it, and add your skills. That will
                                     start to create links with others, and you'll become part of the cluster of people sharing similar skills. Please add the "netneurosci" term to your skills to be part of the Network Neuroscience graph. You can learn more about others by clicking on their dots.
-                                    <br><br>
                                 </p>
                             </div>
 
@@ -782,7 +789,7 @@
 
         </div> <!--q-app-->
 
-
+        <div id="dpi" style="height: 1in;left: -100%;position: absolute;top: -100%;width: 1in;"></div>
 
 
 
@@ -807,8 +814,19 @@
         <script src="./community/brainweb.js"></script>
         
         <script type="module">
+
             const circleName = "BrainWeb";
             const skills = [];
+
+            const day1 = document.getElementById('programDay1').innerHTML;
+            const day2 = document.getElementById('programDay2').innerHTML;
+
+            const before = document.getElementById('programDay1Before');
+            const after = document.getElementById('programDay2After');
+            before.id = '';
+            after.id = '';
+            before.innerHTML = day2;
+            after.innerHTML = day1;
 
             function arr2dic(arr) {
                 const dic = {};

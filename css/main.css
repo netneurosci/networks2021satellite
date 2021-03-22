@@ -15,7 +15,7 @@ html,h1,h2,h3,h4,h5,h6,a {
 
 /* h1 in body except for header */
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.9rem;
     line-height: 1.2 !important;
     letter-spacing: normal;
     -webkit-font-smoothing: auto;
@@ -30,9 +30,25 @@ h1 div:not(#myheader){
     margin: 1.6em 0 0 0 !important;
     text-align: left !important;
 }
+h2 {
+    font-size: 2.8rem;
+    font-weight: 700 !important;
+}
 h3 {
-    font-weight: 500 !important;
-    line-height: normal;
+    font-size: 2.7rem;
+    font-weight: 700 !important;
+}
+h4 {
+    font-size: 2.6rem;
+    font-weight: 700 !important;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+}
+h5 {
+    font-size: 2.4rem;
+    font-weight: 700 !important;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
 }
 body {
     font-family: 'Roboto', sans-serif;
@@ -43,11 +59,21 @@ body {
     color: #fff;
 }
 html, body {
-    font-size: 18px;
+    font-size: 10px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    html, body {
+        font-size: 18px;
+    }
 }
 @media only screen and (-webkit-max-device-pixel-ratio: 2) and (min-width: 600px) {
     html, body {
         font-size: 10px;
+    }
+}
+@media only screen and (-webkit-max-device-pixel-ratio: 2) and (min-width: 900px) {
+    html, body {
+        font-size: 9px;
     }
 }
 p {
@@ -116,12 +142,11 @@ a:hover,a:focus,a:active {
 .navbar {
     background: none;
     padding: 0px;
-    font-size: 2rem;
     /* height: 2.7em; */
     /*text-align: center;*/
 }
 .navbar * {
-    font-size: 2rem;
+    font-size: 1.7rem;
 }
 .nav-link, .navbar-brand {
     /*color: #f4f4f4;*/
