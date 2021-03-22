@@ -25,7 +25,6 @@ function initApp(app) {
       app.userPicture = null;
       document.querySelector("#userAvatar").style.display = "none";
       document.querySelector("#userAvatar img").src = "";
-      document.getElementById("loginStatus").innerHTML = `<a style="color:white" href="#" onclick="signIn()">Sign In</a>`;
     }
   }, function (error) {
     Sentry.captureException(error);

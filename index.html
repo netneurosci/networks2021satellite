@@ -134,9 +134,10 @@
             position: relative;
             bottom: 0px;
             right: 0px;
+            display: flex;
             flex: 1 1 100%;
             /* width: 100%; */
-            height: 100%;
+            height: 100vh;
             /* min-height: 700px; */
             top: 0;
             bottom:0;
@@ -150,6 +151,7 @@
         #network svg {
             width: 100%;
             flex-grow: 1;
+            margin-top: 10vh;
         }
 
         @keyframes shinebrightlikeadiamond {
@@ -168,7 +170,7 @@
         }
         #network svg .name {
             fill: rgb(255,255,255,0.3);
-            font-size: 8px;
+            font-size: 1em;
         }
         #network svg circle:hover + .name{
             fill: rgb(255,255,255,1);
@@ -384,7 +386,7 @@
             background: none;
             /* padding-top: 0.6rem; */
             line-height: 1.8;
-            font-size: 1rem;
+            font-size: 2rem;
             font-weight: 300;
         }
         #register {
@@ -441,7 +443,7 @@
                         <a class="nav-link" href="/videoconference/">Videoconference</a>
                     </li> -->
                     <li class="nav-item">
-                        <span class="nav-link" id="loginStatus" style="border-bottom:none"><a style="color:white" href="#" onclick="signIn()">Add yourself to graph</a></span>
+                        <span class="nav-link" id="loginStatus" style="border-bottom:none"><a style="color:white" href="#" onclick="signIn()">Sign In</a></span>
                     </li>
                     <li class="nav-item" id="userAvatar">
                         <img class="userIcon"/>
@@ -476,7 +478,7 @@
 
                 <div class="container" style="margin-top: 0">
 
-                    <div v-cloak class="row">
+                    <div v-cloak v-if="!spinning" class="row">
                         <!-- Person's card -->
                         <div v-if="cardDisplayName !== userDisplayName">
                             <q-dialog v-model="displayCard">
@@ -486,13 +488,13 @@
                                             <q-avatar round size="48px">
                                                 <img :src="`https://avatars3.githubusercontent.com/u/${cardUID}?v=4`" />
                                             </q-avatar>
-                                            <a v-cloak class="col text-h6" :href="`https://github.com/${cardGitHubName}`">
+                                            <a v-cloak v-if="!spinning" class="col text-h6" :href="`https://github.com/${cardGitHubName}`">
                                                 {{cardDisplayName}}
                                             </a>
                                         </q-chip>
                                     </q-card-section>
                                     <q-card-section style="background: hsla(0,0%,100%,0.07);border-radius:4px 4px 0 0;margin:16px">
-                                        <q-chip v-cloak color="dark" v-for="skill in cardSkills">
+                                        <q-chip v-cloak v-if="!spinning" color="dark" v-for="skill in cardSkills">
                                             {{skill}}
                                         </q-chip>
                                     </q-card-section>
@@ -507,7 +509,7 @@
                                             <q-avatar round size="48px">
                                                 <img :src="`https://avatars3.githubusercontent.com/u/${uid}?v=4`" />
                                             </q-avatar>
-                                            <a v-cloak class="col text-h6" :href="`https://github.com/${userGitHubName}`">
+                                            <a v-cloak v-if="!spinning" class="col text-h6" :href="`https://github.com/${userGitHubName}`">
                                                 {{userDisplayName}}
                                             </a>
                                         </q-chip>
@@ -539,13 +541,13 @@
 
 
             <!-- part 1 landing network graph and about -->
-            <div v-cloak class="row" id="landinggraph">
-                <div v-cloak class="container" style="background: rgba(0,0,0,0.3);">
+            <div v-cloak v-if="!spinning" class="row" id="landinggraph">
+                <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
                     <h4 style="padding-bottom:2rem;padding-top:1rem;">Satellite to the Networks 2021 Conference</h4>
-                    <div v-cloak class="row">
+                    <div v-cloak v-if="!spinning" class="row">
 
-                        <div v-cloak id="programTableContainer">
-                            <div v-cloak class="programTableDescription" style="margin-bottom:2rem;">
+                        <div v-cloak v-if="!spinning" id="programTableContainer">
+                            <div v-cloak v-if="!spinning" class="programTableDescription" style="margin-bottom:2rem;">
                                 <p>
                                     The satellite will take place between June 28 and July 2, most likely on June 30 and July 1. The satellite is free and will be a completely virtual event. Please register for the <a href="https://networks2021.net">main conference</a> to attend the event. Please also <a href="#" onclick="signIn()">add yourself to the Network Neuroscience graph</a> to join our community as a part of the larger BrainWeb community. Once you logged in, your name should be an isolated dot flying around. Find it, click on it, and add your skills. That will start to create links with others, and you'll become part of the cluster of people sharing similar skills. Please add the "netneurosci" term to your skills to be part of the Network Neuroscience graph. You can learn more about others by clicking on their dots.
                                     <br/>
@@ -563,10 +565,10 @@
 
 
             <!-- part 2 Program -->
-            <div v-cloak class="row" id="program">
-                <div v-cloak class="container">
+            <div v-cloak v-if="!spinning" class="row" id="program">
+                <div v-cloak v-if="!spinning" class="container">
                     <h4 style="padding-bottom:2rem;">Program</h4>
-                    <div v-cloak class="row">
+                    <div v-cloak v-if="!spinning" class="row">
 
                         <div id="programTableContainer">
                             <div class="programTableHeader">
@@ -596,13 +598,13 @@
                                     </div> <!--programSessions-->
 
                                     <div class="programTableContentUneven">
-                                        <div class="programTableItems">Invited Talk</div>
-                                        <div class="programTableItems">Mariangeles Serrano</div>
+                                        <div class="programTableItems"><p>Invited Talk</div>
+                                        <div class="programTableItems"><p>Mariangeles Serrano</p></div>
                                     </div> <!--programTableContentUneven-->
 
                                     <div class="programTableContentEven">
-                                        <div class="programTableItems">Contributed Talks</div>
-                                        <div class="programTableItems">Will be announced shortly</div>
+                                        <div class="programTableItems"><p>Contributed Talks</p></div>
+                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
                                     </div> <!--programTableContentEven-->
 
                                     <div class="programSessions">
@@ -610,13 +612,13 @@
                                     </div> <!--programSessions-->
 
                                     <div class="programTableContentUneven">
-                                        <div class="programTableItems">Invited Talk</div>
-                                        <div class="programTableItems">Plamen Ivanov</div>
+                                        <div class="programTableItems"><p>Invited Talk</p></div>
+                                        <div class="programTableItems"><p>Plamen Ivanov</p></div>
                                     </div> <!--programTableContentUneven-->
 
                                     <div class="programTableContentEven">
-                                        <div class="programTableItems">Contributed Talks</div>
-                                        <div class="programTableItems">Will be announced shortly</div>
+                                        <div class="programTableItems"><p>Contributed Talks</p></div>
+                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
                                     </div> <!--programTableContentEven-->
 
                                     <div class="programSessions">
@@ -624,8 +626,8 @@
                                     </div> <!--programSessions-->
 
                                     <div class="programTableContentUneven">
-                                        <div class="programTableItems">Carolyn Parkinson</div>
-                                        <div class="programTableItems"></div>
+                                        <div class="programTableItems"><p>Carolyn Parkinson</div>
+                                        <div class="programTableItems"><p></p></div>
                                     </div> <!--programTableContentUneven-->
 
                                     <div class="programSessions">
@@ -646,13 +648,13 @@
                                     </div> <!--programSessions-->
 
                                     <div class="programTableContentUneven">
-                                        <div class="programTableItems">Invited Talk</div>
-                                        <div class="programTableItems">Maurizio Corbetta</div>
+                                        <div class="programTableItems"><p>Invited Talk</p></div>
+                                        <div class="programTableItems"><p>Maurizio Corbetta</p></div>
                                     </div> <!--programTableContentUneven-->
 
                                     <div class="programTableContentEven">
-                                        <div class="programTableItems">Contributed Talks</div>
-                                        <div class="programTableItems">Will be announced shortly</div>
+                                        <div class="programTableItems"><p>Contributed Talks</p></div>
+                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
                                     </div> <!--programTableContentEven-->
 
                                     <div class="programSessions">
@@ -660,13 +662,13 @@
                                     </div> <!--programSessions-->
 
                                     <div class="programTableContentUneven">
-                                        <div class="programTableItems">Invited Talk</div>
-                                        <div class="programTableItems">Dimitri Van De Ville</div>
+                                        <div class="programTableItems"><p>Invited Talk</p></div>
+                                        <div class="programTableItems"><p>Dimitri Van De Ville</p></div>
                                     </div> <!--programTableContentUneven-->
 
                                     <div class="programTableContentEven">
-                                        <div class="programTableItems">Contributed Talks</div>
-                                        <div class="programTableItems">Will be announced shortly</div>
+                                        <div class="programTableItems"><p>Contributed Talks</p></div>
+                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
                                     </div> <!--programTableContentEven-->
 
                                     <div class="programSessions">
@@ -705,10 +707,10 @@
 
 
             <!-- part 3 Submit -->
-            <div v-cloak class="row" id="submit">
-                <div v-cloak class="container" style="background: rgba(0,0,0,0.3);">
+            <div v-cloak v-if="!spinning" class="row" id="submit">
+                <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
                     <h4 style="padding-bottom:2rem;padding-top:1rem;">Submit your abstract</h4>
-                    <div v-cloak class="row">
+                    <div v-cloak v-if="!spinning" class="row">
 
                         <div id="programTableContainer">
                             <div class="programTableDescription" style="padding-bottom:1rem;">
@@ -742,10 +744,10 @@
 
 
             <!-- part 4 Register -->
-            <div v-cloak class="row" id="register">
-                <div v-cloak class="container" style="background: rgba(0,0,0,0.3);">
+            <div v-cloak v-if="!spinning" class="row" id="register">
+                <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
                     <h4 style="padding-bottom:2rem;padding-top:1rem;">Register</h4>
-                    <div v-cloak class="row">
+                    <div v-cloak v-if="!spinning" class="row">
 
                         <div id="programTableContainer">
                             <div class="programTableDescription" style="margin-bottom:2rem;">
@@ -769,8 +771,8 @@
 
 
                 <!-- footer -->
-                <div class="row" id="CoC" style="width:100%; height:40px; position:relative; bottom:0px; margin:0;padding:0;border:0; color:white; background:#111111;">
-                    <p style="font-size:14px;position:absolute;left:50%;transform: translate(-50%,0%);">Made with love &nbsp; ❤ &nbsp; Please respect the <a href="https://github.com/netneurosci/networks2021staellite.io/blob/master/CoC.md" target="_blank">NetNeurosci Code of Conduct.</a></p>
+                <div class="row" id="CoC" style="width:100%; position:relative; bottom:0px; margin:0;padding:0;border:0; color:white; background:#111111;">
+                    <p style="text-align: center; font-size: 1.4rem; width: 100%">Made with love &nbsp; ❤ &nbsp; Please respect the <a href="https://github.com/netneurosci/networks2021staellite.io/blob/master/CoC.md" target="_blank">NetNeurosci Code of Conduct.</a></p>
                 </div>
 
             </div> <!--registration div-->

@@ -34,19 +34,29 @@ h3 {
     font-weight: 500 !important;
     line-height: normal;
 }
-
 body {
     font-family: 'Roboto', sans-serif;
-    /* font-size: 16px;
-    -webkit-font-smoothing: auto; */
     padding: 0;
     margin: 0;
     /*background:#111;*/
     background: rgb(120, 120, 120);
     color: #fff;
 }
+html, body {
+    font-size: 18px;
+}
+@media only screen and (min-width: 992px) {
+    html, body {
+        font-size: 12px;
+    }
+}
+@media (max-width: 992px) {
+    html, body {
+        font-size: 12px;
+    }
+}
 p {
-    font-size: 16px;
+    font-size: 2rem;
     -webkit-font-smoothing: auto;
 }
 
@@ -111,8 +121,12 @@ a:hover,a:focus,a:active {
 .navbar {
     background: none;
     padding: 0px;
+    font-size: 2rem;
     /* height: 2.7em; */
     /*text-align: center;*/
+}
+.navbar * {
+    font-size: 2rem;
 }
 .nav-link, .navbar-brand {
     /*color: #f4f4f4;*/
@@ -131,7 +145,6 @@ a:hover,a:focus,a:active {
 */
 .nav-link {
     margin-right: 1em !important;
-    font-size: 14px;
     font-weight: 400 !important;
     -webkit-font-smoothing: auto;
     text-align: -webkit-match-parent;
