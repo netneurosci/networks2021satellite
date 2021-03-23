@@ -1049,10 +1049,10 @@
                             app.userDisplayName,
                             (user) => {
                                 app.displayCard = true;
-                                app.cardDisplayName = app.people[user.index].displayname;
-                                app.cardGitHubName = app.people[user.index].username;
-                                app.cardUID = app.people[user.index].uid;
-                                app.cardSkills = app.people[user.index].skills;
+                                app.cardDisplayName = filteredPeople[user.index].displayname;
+                                app.cardGitHubName = filteredPeople[user.index].username;
+                                app.cardUID = filteredPeople[user.index].uid;
+                                app.cardSkills = filteredPeople[user.index].skills;
                             }
                         );
                     } else {
