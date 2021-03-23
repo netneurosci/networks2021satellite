@@ -964,7 +964,8 @@
         <script type="module">
 
             const circleName = "BrainWeb";
-            const skills = [];
+            const skill =  "netneurosci";
+            const skills = ["graph theory", skill];
 
             const day1 = document.getElementById('programDay1').innerHTML;
             const day2 = document.getElementById('programDay2').innerHTML;
@@ -1051,19 +1052,29 @@
                     if(circle === null) {
                         return;
                     }
-                    circle = filter(circle, ["graph theory","netneurosci"]);
+
+                    databaseDicToPeopleArr(circle);
+                    addCurrentUser();
+
+                    circle = filter(circle, skills);
                     const circleLength = Object.keys(circle).length;
                     if(circleLength > 15) {
-
-                        databaseDicToPeopleArr(circle);
-                        addCurrentUser();
-                        await addBrainWebToElement("#network", app.people, app.userDisplayName, (user) => {
-                            app.displayCard = true;
-                            app.cardDisplayName = app.people[user.index].displayname;
-                            app.cardGitHubName = app.people[user.index].username;
-                            app.cardUID = app.people[user.index].uid;
-                            app.cardSkills = app.people[user.index].skills;
-                        });
+                        await addBrainWebToElement(
+                            "#network",
+                            app.people.filter(
+                                (p) => (p.skills || []).some(
+                                    (s) => skills.includes(s?.toLowerCase() || false)
+                                )
+                            ),
+                            app.userDisplayName,
+                            (user) => {
+                                app.displayCard = true;
+                                app.cardDisplayName = app.people[user.index].displayname;
+                                app.cardGitHubName = app.people[user.index].username;
+                                app.cardUID = app.people[user.index].uid;
+                                app.cardSkills = app.people[user.index].skills;
+                            }
+                        );
                     } else {
                       console.log("Graph too small to proceed", circleLength);
                     }
@@ -1087,11 +1098,6 @@
                     }
                     if(typeof p.displayname === "undefined") {
                         p.displayname = p.username;
-                    }
-                    for(let s of p.skills) {
-                        if(!skills.includes(s)) {
-                            skills.push(s);
-                        }
                     }
                     app.people.push(p);
                 }
@@ -1139,12 +1145,16 @@
                             displayname: userDisplayName,
                             username: login,
                             uid: app.uid,
-                            skills: []
+                            skills: ['netneurosci']
                         });
                     }
                     document.getElementById("loginStatus").innerHTML = `${userDisplayName} (<a style="color:white" href="#" onclick="signOut()">Sign Out</a>)`;
                     peopleArrToDatabaseDic(app.people);
                 } else {
+                    if (!app.people[index].skills.map((s) => s.toLowerCase()).includes(skill)) {
+                        app.people[index].skills.push(skill);
+                        peopleArrToDatabaseDic(app.people);
+                    }
                     app.userGitHubName = app.people[index].username;
                 }
             }
