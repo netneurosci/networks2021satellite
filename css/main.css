@@ -141,7 +141,7 @@ a:hover,a:focus,a:active {
 /* navigation */
 .navbar {
     background: none;
-    padding: 0px;
+    padding: 0.1%;
     /* height: 2.7em; */
     /*text-align: center;*/
 }
