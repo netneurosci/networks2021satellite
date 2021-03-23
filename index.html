@@ -77,13 +77,41 @@
             line-height: 1.8;
             font-weight: 300;
         }
-        #landinggraph a, #program a, #submit a, #register a {
+        #landinggraph a, #program a, #submit a, #register a, #organizers a {
             font-weight: 700;
             text-decoration: none;
             border: none;
         }
-        #landinggraph a:hover,#landinggraph a:focus,#landinggraph a:active,#program a:hover,#program a:focus,#program a:active, #submit a:hover,#submit a:focus,#submit a:active, #register a:hover,#register a:focus,#register a:active {
+        #landinggraph a:hover,#landinggraph a:focus,#landinggraph a:active,#program a:hover,#program a:focus,#program a:active, #submit a:hover,#submit a:focus,#submit a:active, #register a:hover,#register a:focus,#register a:active, #organizers a:hover,#organizers a:focus,#organizers a:active {
             font-weight: 700;
+            text-decoration: none;
+            border: none;
+            color: grey;
+        }
+        #organizers a {
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+        }
+        #organizers a:hover,#organizers a:focus,#organizers a:active {
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            color: grey;
+        }
+        #CoC p {
+            width: 100%;
+            position:relative;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        #CoC a {
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+        }
+        #CoC a:hover,#CoC a:focus,#CoC a:active {
+            font-weight: 500;
             text-decoration: none;
             border: none;
             color: grey;
@@ -215,7 +243,7 @@
             filter: grayscale(50%) contrast(150%) opacity(30%);
             -webkit-filter: grayscale(80%) contrast(150%) opacity(100%);
         }
-        #landinggraph p, #submit p, #register p {
+        #landinggraph p, #submit p, #register p, #organizers p {
             background: none;
             padding-top: 0.6rem;
             line-height: 1.8;
@@ -308,7 +336,7 @@
             flex-direction: row;
             width: 100%;
             position: relative;
-            height: 0;
+            height: 0rem;
             background: rgba(255,255,255,0.1);
         }
         /* .programSessions {
@@ -395,6 +423,7 @@
         #register {
             /* background: rgba(0, 0, 0, 0.1); */
             padding-top: 6rem;
+            padding-bottom: 6rem;
             background: rgba(0,0,0,0.8);
             background-image: url('./images/landing/background.jpg');
             background-repeat: no-repeat;
@@ -407,6 +436,30 @@
             filter: grayscale(50%) contrast(150%) opacity(30%);
             -webkit-filter: grayscale(80%) contrast(150%) opacity(100%);
         }
+        #organizers {
+            /* background: rgba(220, 220, 220, 0.1); */
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            background: rgba(0,0,0,0.8);
+            background-image: url('./images/landing/background_s.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-position: center;
+            filter: grayscale(50%) contrast(150%) opacity(30%);
+            -webkit-filter: grayscale(80%) contrast(150%) opacity(100%);
+        }
+        #organizers li {
+            background: none;
+            /* padding-top: 0.6rem; */
+            line-height: 1.8;
+            font-size: 2rem;
+            font-weight: 300;
+        }
+
         [v-cloak] {
             display: none;
         }
@@ -595,7 +648,7 @@
                                         <p><b>Day 1. Preliminary time 12:30 PM–4:30 PM EST</b></p>
                                     </div> <!--programDay-->
 
-                                    <div id="programDay1Before" style="visibility: hidden;"></div>
+                                    <div id="programDay1Before" style="visibility: hidden; background: none;"></div>
 
                                     <div class="programSessionsEmpty">
                                         <!-- <div><p>empty</p></div> -->
@@ -689,7 +742,7 @@
                                     <div class="programSessionsEmpty">
                                     </div> <!--programSessionsEmpty-->
 
-                                    <div id="programDay2After" style="visibility: hidden;"></div>
+                                    <div id="programDay2After" style="visibility: hidden; background: none;"></div>
 
                                 </div> <!--programDay2-->
 
@@ -701,7 +754,7 @@
                             </div>
                             <div class="textparagraph">
                                 <p>
-                                    The 2021 Network Neuroscience Satellite will include a number of poster and oral presentations contributed by submission. For the poster sessions we are working to provide a friendly, robust, and inclusive platform to maximize the quality of the interactions. If you would like to present your work, please, follow this link to <a href=https://easychair.org/conferences/?conf=netneuro2021> Easychair</a>, select the type of contribution and submit your abstract by April 9th. Detailed information can be found <a href="#submit">below.</a><br>
+                                    The 2021 Network Neuroscience Satellite will include a number of poster and oral presentations contributed by submission. For the poster sessions we are working to provide a friendly, robust, and inclusive platform to maximize the quality of the interactions. If you would like to present your work, please, <a href="https://easychair.org/conferences/?conf=netneuro2021" target="_blank">follow this link</a> to Easychair, select the type of contribution and submit your abstract by April 9th. Detailed information can be found <a href="#submit">below.</a><br>
                                 </p>
                             </div>
 
@@ -726,7 +779,7 @@
                                 <p>
                                     Abstracts should be in pdf format and no longer than 1 page (about 500 words). Please note that we have only a limited number of slots available for oral presentations, and encourage you to consider submitting your work as a poster. We will be holding a dedicated session for the posters. <br/>
                                     Oral presentations will be selected by the program committee and added to our website as <b>Contributed Talks</b>. Presentations are planned for 15 minutes each. <br/>
-                                    If you would like to present your work, please, follow this link to <a href=https://easychair.org/conferences/?conf=netneuro2021> Easychair</a>, select the type of contribution and submit your abstract by April 9th. 
+                                    If you would like to present your work, please, <a href="https://easychair.org/conferences/?conf=netneuro2021" target="_blank">follow this link</a> to Easychair, select the type of contribution and submit your abstract by April 9th. 
                                 </p>
                                 <p>
                                     We welcome submissions from all areas of Network Neuroscience, including (but not limited to):
@@ -763,7 +816,7 @@
                         <div id="programTableContainer">
                             <div class="programTableDescription" style="margin-bottom:2rem;">
                                 <p>
-                                    The satellite is free and will be a completely virtual event. Please register for the <a href="https://networks2021.net">main conference</a> to attend the event.
+                                    The satellite will be a completely virtual event. Please register for the <a href="https://networks2021.net">main conference</a> to attend the event.
                                 </p>
                                 <p>
                                     Please also <a href="#" onclick="signIn()">add yourself to the Network Neuroscience graph</a> to join our community as a part of the larger BrainWeb community. Once you logged in, your name should be an isolated dot flying around. Find it, click on it, and add your skills. That will start to create links with others, and you'll become part of the cluster of people sharing similar skills. Please add the "netneurosci" term to your skills to be part of the Network Neuroscience graph. You can learn more about others by clicking on their dots.
@@ -776,16 +829,44 @@
 
                 </div> <!--container of registration section-->
 
-
-
-
-                <!-- footer -->
-                <div class="row" id="CoC" style="width:100%; position:relative; bottom:0px; margin:0;padding:0;border:0; color:white; background:#111111;">
-                    <p style="text-align: center; font-size: 1.4rem; width: 100%">Made with love &nbsp; ❤ &nbsp; Please respect the <a href="https://github.com/netneurosci/networks2021satellite/blob/main/CoC.md" target="_blank">NetNeurosci Code of Conduct.</a></p>
-                </div>
-
             </div> <!--registration div-->
 
+
+
+            <!-- part 5 Organisers -->
+            <div v-cloak v-if="!spinning" class="row" id="organizers">
+                <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
+                    <h4>Team of organizers</h4>
+                    <div v-cloak v-if="!spinning" class="row">
+
+                        <div id="programTableContainer">
+                            <div class="programTableDescription" style="padding-bottom:2rem;">
+                                <p>
+                                    <a href="https://psych.indiana.edu/directory/faculty/betzel-richard.html">Richard Betzel</a> (Indiana University, USA) <br />
+                                    <a href="https://sites.google.com/site/devicofallanifabrizio">Fabrizio De Vico Fallani</a> (Inria & Institut du Cerveau et de la Moelle Épinière, France) <br />
+                                    <a href="https://www.researchgate.net/profile/Katja-Heuer-2">Katja Heuer</a> University of Paris & Max Planck Institute for Human Cognitive and Brain Sciences<br />
+                                    <a href="https://users.ugent.be/~dmarinaz">Daniele Marinazzo</a> (UGhent, Belgium) <br />
+                                    <a href="https://psych.indiana.edu/faculty/osporns.php">Olaf Sporns</a> (Indiana University, USA) <br />
+                                    <a href="https://neuroanatomy.github.io">Roberto Toro</a> (Institut Pasteur, France) <br />
+                                    <a href="https://emmatowlson.github.io">Emma Towlson</a> (Northeastern University, USA) <br />
+                                    <a href="https://www.researchgate.net/profile/Robin-Wilkins">Robin Wilkins</a> (University of North Carolina-Greensboro, USA) <br />
+                                </p>
+                            </div>
+
+                        </div> <!--programTableContainer-->
+
+                    </div> <!--row of organizer section-->
+
+                </div> <!--container of organizer section-->
+
+            </div> <!--organizers div-->
+
+
+
+            <!-- footer -->
+            <div class="row" id="CoC" style="width:100%; position:relative; bottom:0px; margin:0;padding-top:1%;border:0; color:white; background:#111111;">
+                <p style="text-align: center; font-size: 1.4rem; width: 100%">Made with love &nbsp; ❤ &nbsp; Please respect the <a href="https://github.com/netneurosci/networks2021satellite/blob/main/CoC.md" target="_blank">NetNeurosci Code of Conduct.</a></p>
+            </div>
 
 
 
