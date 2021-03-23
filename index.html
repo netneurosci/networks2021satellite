@@ -969,7 +969,8 @@
 
             const circleName = "BrainWeb";
             const skill =  "netneurosci";
-            const skills = ["graph theory", skill];
+            const filterSkills = ["graph theory", skill];
+            const skills = [];
 
             function arr2dic(arr) {
                 const dic = {};
@@ -1001,6 +1002,7 @@
 
             function update(databaseDic) {
                 if(app.uid === null) {
+                    app.spinning = false;
                     return;
                 }
 
@@ -1011,8 +1013,10 @@
                 firebase.database().ref(`circles/${circleName}`)
                     .update(obj)
                     .then(function(snapshot) {
+                        app.spinning = false;
                         console.log('update: success');
                     }, function(error) {
+                        app.spinning = false;
                         Sentry.captureException(error);
                         console.log('update: error', error);
                     });
@@ -1032,7 +1036,7 @@
                     const filteredPeople = 
                         app.people.filter(
                             (p) => (p.skills || []).some(
-                                (s) => skills.includes(s?.toLowerCase() || false)
+                                (s) => filterSkills.includes(s?.toLowerCase() || false)
                             )
                         )
 
@@ -1097,6 +1101,11 @@
                     }
                     if(typeof p.displayname === "undefined") {
                         p.displayname = p.username;
+                    }
+                    for(let s of p.skills) {
+                        if(!skills.includes(s)) {
+                            skills.push(s);
+                        }
                     }
                     app.people.push(p);
                 }
