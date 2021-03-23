@@ -1005,27 +1005,6 @@
                 return arr;
             }
 
-            /** filter obj to include only entries where skills contain tag */
-            function filter(obj, tags) {
-              const result = {};
-              for(const key of Object.keys(obj)) {
-                if(typeof obj[key].skills === "undefined") {
-                  continue;
-                }
-                let tagPresent = false;
-                for(const tag of tags.map((o)=>{return o.toLowerCase()})) {
-                  if(obj[key].skills.map((o)=>{return o.toLowerCase()}).indexOf(tag)>=0) {
-                    tagPresent = true;
-                    break;
-                  }
-                }
-                if(tagPresent) {
-                    result[key] = obj[key];
-                }
-              }
-              return result;
-            }
-
             function update(databaseDic) {
                 if(app.uid === null) {
                     return;
@@ -1056,16 +1035,17 @@
                     databaseDicToPeopleArr(circle);
                     addCurrentUser();
 
-                    circle = filter(circle, skills);
-                    const circleLength = Object.keys(circle).length;
-                    if(circleLength > 15) {
+                    const filteredPeople = 
+                        app.people.filter(
+                            (p) => (p.skills || []).some(
+                                (s) => skills.includes(s?.toLowerCase() || false)
+                            )
+                        )
+
+                    if(filteredPeople.length > 15) {
                         await addBrainWebToElement(
                             "#network",
-                            app.people.filter(
-                                (p) => (p.skills || []).some(
-                                    (s) => skills.includes(s?.toLowerCase() || false)
-                                )
-                            ),
+                            filteredPeople,
                             app.userDisplayName,
                             (user) => {
                                 app.displayCard = true;
@@ -1076,7 +1056,7 @@
                             }
                         );
                     } else {
-                      console.log("Graph too small to proceed", circleLength);
+                      console.log("Graph too small to proceed", filteredPeople.length);
                     }
                     app.spinning = false;
                 });
