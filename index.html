@@ -452,12 +452,56 @@
             filter: grayscale(50%) contrast(150%) opacity(30%);
             -webkit-filter: grayscale(80%) contrast(150%) opacity(100%);
         }
-        #organizers li {
-            background: none;
-            /* padding-top: 0.6rem; */
-            line-height: 1.8;
-            font-size: 2rem;
-            font-weight: 300;
+        #organizerColumns {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            position: relative;
+            /* background: rgba(150,150,150,0.1); */
+        }
+        #organizerColumnLeft {
+            display: flex;
+            width: 50%;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            align-items: baseline;
+            padding-left: 1%;
+            padding-right: 1%;
+            margin-right: 2%;
+            /* background: rgba(150,150,150,0.1); */
+        }
+        #organizerColumnRight {
+            display: flex;
+            width: 50%;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            align-items: baseline;
+            padding-left: 1%;
+            padding-right: 1%;
+            margin-left: 2%;
+            /* background: rgba(150,150,150,0.1); */
+        }
+        /* #organizerCardContainer {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            align-items: baseline;
+            padding-left: 1%;
+            padding-right: 1%; */
+            /* margin-right: 1%; */
+            /* background: rgba(150,150,150,0.1); */
+        /* } */
+        .organizerCard {
+            flex: 1 1 25%;
+            padding: 1%;
+            position: relative;
+            /* background: rgba(15,15,15,0.1); */
+            /* margin: 1%; */
         }
 
         [v-cloak] {
@@ -835,23 +879,44 @@
 
             <!-- part 5 Organisers -->
             <div v-cloak v-if="!spinning" class="row" id="organizers">
-                <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
+                <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.2);">
                     <h4>Team of organizers</h4>
                     <div v-cloak v-if="!spinning" class="row">
 
                         <div id="programTableContainer">
                             <div class="programTableDescription" style="padding-bottom:2rem;">
-                                <p>
-                                    <a href="https://psych.indiana.edu/directory/faculty/betzel-richard.html">Richard Betzel</a> (Indiana University, USA) <br />
-                                    <a href="https://sites.google.com/site/devicofallanifabrizio">Fabrizio De Vico Fallani</a> (Inria & Institut du Cerveau et de la Moelle Épinière, France) <br />
-                                    <a href="https://www.researchgate.net/profile/Katja-Heuer-2">Katja Heuer</a> University of Paris & Max Planck Institute for Human Cognitive and Brain Sciences<br />
-                                    <a href="https://users.ugent.be/~dmarinaz">Daniele Marinazzo</a> (UGhent, Belgium) <br />
-                                    <a href="https://psych.indiana.edu/faculty/osporns.php">Olaf Sporns</a> (Indiana University, USA) <br />
-                                    <a href="https://neuroanatomy.github.io">Roberto Toro</a> (Institut Pasteur, France) <br />
-                                    <a href="https://emmatowlson.github.io">Emma Towlson</a> (Northeastern University, USA) <br />
-                                    <a href="https://www.researchgate.net/profile/Robin-Wilkins">Robin Wilkins</a> (University of North Carolina-Greensboro, USA) <br />
-                                </p>
-                            </div>
+                                <div id="organizerColumns">
+                                    <div id="organizerColumnLeft">
+                                        <div class="organizerCard">
+                                            <p><a href="https://psych.indiana.edu/directory/faculty/betzel-richard.html">Richard Betzel</a> (Indiana University, USA)</p>
+                                        </div>
+                                        <div class="organizerCard">
+                                            <p><a href="https://sites.google.com/site/devicofallanifabrizio">Fabrizio De Vico Fallani</a> (Inria & Institut du Cerveau et de la Moelle Épinière, France) </p>
+                                        </div>
+                                        <div class="organizerCard">
+                                            <p><a href="https://www.researchgate.net/profile/Katja-Heuer-2">Katja Heuer</a> (University of Paris & Max Planck Institute)</p>
+                                        </div>
+                                        <div class="organizerCard">
+                                            <p><a href="https://users.ugent.be/~dmarinaz">Daniele Marinazzo</a> (UGhent, Belgium)</p>
+                                        </div>
+
+                                    </div><!--organizerColumn left-->
+                                    <div id="organizerColumnRight">
+                                        <div class="organizerCard">
+                                            <p><a href="https://psych.indiana.edu/faculty/osporns.php">Olaf Sporns</a> (Indiana University, USA) </p>
+                                        </div>
+                                        <div class="organizerCard">
+                                            <p><a href="https://neuroanatomy.github.io">Roberto Toro</a> (Institut Pasteur, France) </p>
+                                        </div>
+                                        <div class="organizerCard">
+                                            <p><a href="https://emmatowlson.github.io">Emma Towlson</a> (Northeastern University, USA) </p>
+                                        </div>
+                                        <div class="organizerCard">
+                                            <p><a href="https://www.researchgate.net/profile/Robin-Wilkins">Robin Wilkins</a> (University of North Carolina-Greensboro, USA) </p>
+                                        </div>
+                                    </div><!--organizerColumn right-->
+                                </div> <!--organizerColumns-->
+                            </div> <!--programTableDescription-->
 
                         </div> <!--programTableContainer-->
 
