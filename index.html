@@ -125,6 +125,14 @@
             display:flex;
             flex-direction: column;
             width: 100%;
+            height: 100vh;
+
+            background-image: url("./images/landing/networkgraph_bg.jpg");
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-position: center;
             /* justify-content: space-around;
             align-items: center; */
             /* background-image: url("./images/landing/networkgraph_bg.jpg"); */
@@ -138,11 +146,10 @@
             opacity: 1.0;
         }
         #conftitle {
-            position:absolute;
-            top:10%;
-            left:5%!important;
+            padding-top: 10vh;
+            padding-left: 5%;
+            height: 10vh;
             flex: 0 1 100%;
-            /* transform: translate( -50%, -50%); */
             font-family: 'Roboto', sans-serif !important;
             line-height: 1.2 !important;
             letter-spacing: normal;
@@ -165,21 +172,14 @@
             display: flex;
             flex: 1 1 100%;
             /* width: 100%; */
-            height: 100vh;
+            height: 90vh;
             /* min-height: 700px; */
             top: 0;
             bottom:0;
-            background-image: url("./images/landing/networkgraph_bg.jpg");
-            background-size: cover;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-position: center;
         }
         #network svg {
             width: 100%;
             flex-grow: 1;
-            margin-top: 10vh;
         }
 
         @keyframes shinebrightlikeadiamond {
@@ -1049,10 +1049,10 @@
                             app.userDisplayName,
                             (user) => {
                                 app.displayCard = true;
-                                app.cardDisplayName = app.people[user.index].displayname;
-                                app.cardGitHubName = app.people[user.index].username;
-                                app.cardUID = app.people[user.index].uid;
-                                app.cardSkills = app.people[user.index].skills;
+                                app.cardDisplayName = filteredPeople[user.index].displayname;
+                                app.cardGitHubName = filteredPeople[user.index].username;
+                                app.cardUID = filteredPeople[user.index].uid;
+                                app.cardSkills = filteredPeople[user.index].skills;
                             }
                         );
                     } else {
