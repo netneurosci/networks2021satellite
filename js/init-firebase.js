@@ -37,6 +37,7 @@ function signIn() {
 window.signIn = signIn;
 function signOut() {
   firebase.auth().signOut();
+  document.getElementById("loginStatus").innerHTML = `<a style="color:white" href="#" onclick="signIn()">Sign In</a>`;
 }
 window.signOut = signOut;
 function startFirebase() {
