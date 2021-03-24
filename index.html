@@ -77,12 +77,12 @@
             line-height: 1.8;
             font-weight: 300;
         }
-        #landinggraph a, #program a, #submit a, #register a, #organizers a {
+        #landinggraph a, #program a, #submit a, #register a {
             font-weight: 700;
             text-decoration: none;
             border: none;
         }
-        #landinggraph a:hover,#landinggraph a:focus,#landinggraph a:active,#program a:hover,#program a:focus,#program a:active, #submit a:hover,#submit a:focus,#submit a:active, #register a:hover,#register a:focus,#register a:active, #organizers a:hover,#organizers a:focus,#organizers a:active {
+        #landinggraph a:hover,#landinggraph a:focus,#landinggraph a:active,#program a:hover,#program a:focus,#program a:active, #submit a:hover,#submit a:focus,#submit a:active, #register a:hover,#register a:focus,#register a:active {
             font-weight: 700;
             text-decoration: none;
             border: none;
@@ -249,7 +249,6 @@
             line-height: 1.8;
             font-weight: 300;
         }
-
 
         #program {
             /* background: rgba(30,0,0,0.5); */
@@ -522,7 +521,7 @@
         <!-- Firebase authentication -->
         <div id="firebaseui-auth-container" class="auth-dialog"></div>
 
-    <!-- navigation bar -->
+        <!-- navigation bar -->
         <!-- data value of nav bar corresponds to id in each section -->
         <nav class="navbar navbar-expand-lg fixed-top ">
 
@@ -536,16 +535,16 @@
                         <a class="nav-link" href="/">NetNeurosci</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#landinggraph">About</a>
+                        <a class="nav-link" data-value="landinggraph" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#program">Program</a>
+                        <a class="nav-link" data-value="program" href="#">Program</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#submit">Submit</a>
+                        <a class="nav-link" data-value="submit" href="#">Submit</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#register">Register</a>
+                        <a class="nav-link" data-value="register" href="#">Register</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="/videoconference/">Videoconference</a>
@@ -802,7 +801,8 @@
                             </div>
                             <div class="textparagraph">
                                 <p>
-                                    The 2021 Network Neuroscience Satellite will include a number of poster and oral presentations contributed by submission. For the poster sessions we are working to provide a friendly, robust, and inclusive platform to maximize the quality of the interactions. If you would like to present your work, please, <a href="https://easychair.org/conferences/?conf=netneuro2021" target="_blank">follow this link</a> to Easychair, select the type of contribution and submit your abstract by April 9th. Detailed information can be found <a href="#submit">below.</a><br>
+                                    The 2021 Network Neuroscience Satellite will include a number of poster and oral presentations contributed by submission. For the poster sessions we are working to provide a friendly, robust, and inclusive platform to maximize the quality of the interactions. All posters will be integrated into a Networks Neuroscience posterwall and you can find an <a href="https://netneurosci.github.io/networks2021satellite/posterwall">example view</a> here. Each poster will have its own associated video chat room throughout the duration of the conference and beyond, and you will see which poster room is active and how many people are currently discussing there on the poster room page. You can see an example <a href="">here</a> until we get your real submissions for this year. <br />
+                                    If you would like to present your work, please, <a href="https://easychair.org/conferences/?conf=netneuro2021" target="_blank">follow this link</a> to Easychair, select the type of contribution and submit your abstract by April 9th. Detailed information can be found <a href="#submit">below.</a><br>
                                 </p>
                             </div>
 
