@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NetNeurosci Wall of Poster</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/quasar@1.9.10/dist/quasar.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@^3.5.2/animate.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+
+    <link
+      rel="icon"
+      sizes="any"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='5' fill='rgb(160, 0, 0)'/%3E%3E%3Ccircle cx='6.8' cy='5' r='2' fill='rgb(255, 235, 0)'/%3E%3C/svg%3E"
+    >
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./js/main.js"></script>
+  </head>
+
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: rgb(15, 15, 15);
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4/build/openseadragon/openseadragon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/openseadragon/bookmark-url/openseadragon-bookmark-url.js"></script>
+
+  <body>
+
+    <style>
+      .userIcon {
+        width: 32px;
+        height: 32px;
+        clip-path: circle(16px at center);
+      }
+      #userAvatar {
+        display: none;
+      }
+      .auth-dialog>div:first-child {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: rgba(0, 0, 0, 0.5);
+        border: thin solid #777;
+        transform: translate( -50%, -50%);
+        z-index: 1050;
+      }
+
+      #loginStatus a {
+        border-bottom: none;
+        color: white;
+      }
+      #loginStatus a:hover {
+        border-bottom:none;
+        color: grey;
+        opacity: 0.6;
+      }
+
+      #csv {
+        margin-top: 4em;
+        margin-bottom: 2em;
+      }
+      #openseadragon1 {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: calc( 100% - 45px);
+        margin-top: 45px;
+      }
+    </style>
+
+    <!-- navigation bar -->
+    <!-- data value of nav bar corresponds to id in each section -->
+    <nav class="navbar navbar-expand-lg fixed-top ">
+
+
+      <button class="navbar-toggler landing-page myCollapsedMenuBarIcon" id="myMenuBtn" type="button" data-toggle="collapse" data-target="#myMenu" aria-controls="myMenu" aria-expanded="false" aria-label="Toggle navigation" style="padding:0;border:none; width:1.5em;height:1.5em;" onclick="this.blur();">
+      </button>
+
+      <div class="collapse navbar-collapse" id="myMenu" style="width:100%;">
+        <ul class="navbar-nav mr-4" >
+          <li class="nav-item">
+              <a class="nav-link" href="../index.html#landinggraph">About</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="../index.html#program">Program</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="../index.html#submit">Submit</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="../index.html#register">Register</a>
+          </li>
+          <!-- <li class="nav-item">
+              <a class="nav-link" href="/videoconference/">Videoconference</a>
+          </li> -->
+          <!-- <li class="nav-item">
+              <span class="nav-link" id="loginStatus" style="border-bottom:none"><a style="color:white" href="#" onclick="signIn()">Sign In</a></span>
+          </li> -->
+          <li class="nav-item" id="userAvatar">
+              <img class="userIcon"/>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- posters -->
+    <div id="openseadragon1"></div>
+
+  </body>
+
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/quasar@1.9.10/dist/quasar.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quasar@1.9.10/dist/icon-set/svg-material-icons.umd.min.js"></script>
+
+  <script type="text/javascript">
+    var viewer = OpenSeadragon({
+      collectionMode:       false,
+      collectionRows:       30, 
+      collectionTileSize:   800,
+      collectionTileMargin: 1,
+      maxZoomPixelRatio: 3,
+      showNavigator: true,
+      id: "openseadragon1",
+      showNavigationControl: false,
+      tileSources: [
+        "https://microdraw.pasteur.fr/ohbm2020/dzi.js"
+      ]
+    });
+    viewer.bookmarkUrl();
+  </script>
+
+</html>
