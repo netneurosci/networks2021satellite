@@ -84,17 +84,18 @@ p {
 a {
     text-decoration: none;
     color:white;
-    border-style:solid;
+    /* border-style:solid;
     border-width: 0px 0px 0.1px 0px;
-    padding-bottom:3px;
-    opacity:0.95;
+    padding-bottom:3px; */
+    /* opacity:0.95; */
+    opacity: 1;
 }
 a:hover,a:focus,a:active {
     /*text-decoration: underline;*/
     text-decoration:none;
-    border-style:solid;
+    /* border-style:solid;
     border-width: 0px 0px 0.1px 0px;
-    padding-bottom:3px;
+    padding-bottom:3px; */
     opacity:1;
     /*transition: all .3s ease-in;*/
 }
@@ -168,6 +169,7 @@ a:hover,a:focus,a:active {
     font-weight: 400 !important;
     -webkit-font-smoothing: auto;
     text-align: -webkit-match-parent;
+    border: none;
 }
 .nav-link:hover {
     /*background: #333;*/
