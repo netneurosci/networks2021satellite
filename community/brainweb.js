@@ -3,8 +3,8 @@ function chart(data, {width, height, radius, clickCallback}) {
   const links = data.links;
   const simulation = d3.forceSimulation(nodes)
     .velocityDecay(0.1)
-    .force("x", d3.forceX(width * 0.5 - width * 0.08).strength(0.005))
-    .force("y", d3.forceY(height * 0.5).strength(0.005))
+    .force("x", d3.forceX(width * 0.5).strength(0.005))
+    .force("y", d3.forceY(height * 0.5 + height * 0.05).strength(0.005))
     .force("link", d3.forceLink(links).id(d => d.id).distance((link) => {
       const dist = Math.sqrt((link.source.x - link.target.x)**2 + (link.source.y - link.target.y)**2);
       return dist;
