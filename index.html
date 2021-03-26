@@ -125,7 +125,6 @@
             display:flex;
             flex-direction: column;
             width: 100%;
-            height: 100vh;
 
             background-image: url("./images/landing/networkgraph_bg.jpg");
             background-size: cover;
@@ -148,8 +147,7 @@
         #conftitle {
             padding-top: 10vh;
             padding-left: 5%;
-            height: 10vh;
-            flex: 0 1 100%;
+            flex-shrink: 1;
             font-family: 'Roboto', sans-serif !important;
             line-height: 1.2 !important;
             letter-spacing: normal;
@@ -161,24 +159,47 @@
         }
         #networkContainer {
             position: relative;
-            flex: 1 1 100%;
-            height: 100%;
+            flex-grow: 1;
+        }
+        #networkInfo {
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: #AAA;
+            pointer-events: none;
+            padding: 2% 3%;
         }
         #network {
             z-index: 50;
-            position: relative;
-            bottom: 0px;
-            right: 0px;
+            flex-grow: 1;
             display: flex;
-            flex: 1 1 100%;
-            /* width: 100%; */
-            height: 90vh;
-            /* min-height: 700px; */
-            top: 0;
-            bottom:0;
+        }
+        @media only screen and (-webkit-max-device-pixel-ratio: 2) and (min-width: 900px) {
+            #community {
+                height: 100vh;
+            }
+            #network {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 20vw;
+                right: 0;
+            }
+            #network svg text {
+                font-size: 0.8rem !important;
+            }
+            #networkInfo {
+                position: absolute;
+                max-width: 30vw;
+                bottom: 0;
+                top: 0;
+            }
+            #networkInfo p {
+                font-size: 1.7rem;
+            }
         }
         #network svg {
-            width: 100%;
             flex-grow: 1;
         }
 
@@ -198,7 +219,7 @@
         }
         #network svg .name {
             fill: rgb(255,255,255,0.3);
-            font-size: 1em;
+            font-size: 0.7rem;
         }
         #network svg circle:hover + .name{
             fill: rgb(255,255,255,1);
@@ -567,9 +588,20 @@
                     <h1>Network Neuroscience</h1>
                 </div>
 
-
                 <div id="networkContainer">
                     <div id="network"></div>
+                    <div id="networkInfo" v-if="!spinning">
+                        <p>
+                        This is the <strong>Network Neuroscience</strong> community graph.
+                        Add yourself to the graph by <a href="#" onclick="signIn()">signing in with GitHub</a>,
+                        add your skills to take your place in the network graph.
+                        </p>
+                        <p>
+                        The Network Neuroscience
+                        community is part of the larger <a href="https://brain-web.github.io/">BrainWeb community</a>
+                        and you can explore your connections within the wider network.
+                        </p>
+                    </div>
                 </div>
 
 
@@ -959,7 +991,7 @@
 
 
             <!-- footer -->
-            <div class="row" id="CoC" style="width:100%; position:relative; bottom:0px; margin:0;padding-top:1%;border:0; color:white; background:#111111;">
+            <div class="row" id="CoC" v-if="!spinning" style="width:100%; position:relative; bottom:0px; margin:0;padding-top:1%;border:0; color:white; background:#111111;">
                 <p style="text-align: center; font-size: 1.4rem; width: 100%">Made with love &nbsp; ❤ &nbsp; Please respect the <a href="https://github.com/netneurosci/networks2021satellite/blob/main/CoC.md" target="_blank">NetNeurosci Code of Conduct.</a></p>
             </div>
 
