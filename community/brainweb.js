@@ -78,15 +78,18 @@ function chart(data, {width, height, radius, clickCallback}) {
 
 const drag = (simulation) => {
   function dragstarted(d) {
+    d3.event.sourceEvent.preventDefault();
     if (!d3.event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x;
     d.fy = d.y;
   }
   function dragged(d) {
+    d3.event.sourceEvent.preventDefault();
     d.fx = d3.event.x;
     d.fy = d3.event.y;
   }
   function dragended(d) {
+    d3.event.sourceEvent.preventDefault();
     if (!d3.event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
