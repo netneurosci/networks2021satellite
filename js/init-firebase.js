@@ -3,10 +3,6 @@ function initApp(app) {
   firebase.auth().onAuthStateChanged(async (user) => {
     if (user) {
       const { displayName, photoURL, providerData } = user;
-      document.querySelector("#userAvatar img").src = photoURL;
-      document.querySelector("#userAvatar").style.display = "inline-block";
-      document.getElementById("loginStatus").innerHTML = `<span id="user">${displayName}</span> (<a style="color:white" href="#" onclick="signOut()">Sign Out</a>)`;
-
       const { uid } = providerData[0];
       app.userSignedIn = true;
       app.uid = uid;
@@ -23,21 +19,21 @@ function initApp(app) {
       app.userDisplayName = null;
       app.userGitHubName = null;
       app.userPicture = null;
-      document.querySelector("#userAvatar").style.display = "none";
-      document.querySelector("#userAvatar img").src = "";
     }
   }, function (error) {
     Sentry.captureException(error);
   });
 }
-function signIn() {
+function signIn(app) {
   uiConfig.signInSuccessUrl = location.pathname;
-  uiAuth.start('#firebaseui-auth-container', uiConfig);
+  app.displaySignIn = true;
+  setTimeout(() => {
+    uiAuth.start('#firebaseui-auth-container', uiConfig);
+  }, 500)
 }
 window.signIn = signIn;
 function signOut() {
   firebase.auth().signOut();
-  document.getElementById("loginStatus").innerHTML = `<a style="color:white" href="#" onclick="signIn()">Sign In</a>`;
 }
 window.signOut = signOut;
 function startFirebase() {

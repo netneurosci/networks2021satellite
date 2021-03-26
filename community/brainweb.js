@@ -3,8 +3,8 @@ function chart(data, {width, height, radius, clickCallback}) {
   const links = data.links;
   const simulation = d3.forceSimulation(nodes)
     .velocityDecay(0.1)
-    .force("x", d3.forceX(width * 0.5 - width * 0.08).strength(0.005))
-    .force("y", d3.forceY(height * 0.5).strength(0.005))
+    .force("x", d3.forceX(width * 0.5).strength(0.005))
+    .force("y", d3.forceY(height * 0.5 + height * 0.05).strength(0.005))
     .force("link", d3.forceLink(links).id(d => d.id).distance((link) => {
       const dist = Math.sqrt((link.source.x - link.target.x)**2 + (link.source.y - link.target.y)**2);
       return dist;
@@ -78,15 +78,18 @@ function chart(data, {width, height, radius, clickCallback}) {
 
 const drag = (simulation) => {
   function dragstarted(d) {
+    d3.event.sourceEvent.preventDefault();
     if (!d3.event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x;
     d.fy = d.y;
   }
   function dragged(d) {
+    d3.event.sourceEvent.preventDefault();
     d.fx = d3.event.x;
     d.fy = d3.event.y;
   }
   function dragended(d) {
+    d3.event.sourceEvent.preventDefault();
     if (!d3.event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
