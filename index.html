@@ -183,7 +183,7 @@
                 position: absolute;
                 top: 0;
                 bottom: 0;
-                left: 20vw;
+                left: 0;
                 right: 0;
             }
             #network svg text {
@@ -234,6 +234,11 @@
         }
         #network svg text::selection {
             background: none;
+        }
+        @media only screen and (-webkit-max-device-pixel-ratio: 2) and (min-width: 900px) {
+            #network svg > g {
+                transform: translate(20%, 0);
+            }
         }
         /* [v-cloak] {
             display: none;
