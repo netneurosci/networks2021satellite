@@ -43,6 +43,28 @@
             height: 32px;
             clip-path: circle(16px at center);
         }
+        #userAvatar {
+            display: none;
+        }
+        .auth-dialog > div:first-child {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background: rgba(0,0,0,0.5);
+            border: thin solid #777;
+            transform: translate(-50%, -50%);
+            z-index: 1050;
+        }
+        #loginStatus a {
+            border-bottom: none;
+            color: white;
+        }
+        #loginStatus a:hover {
+            /* border-bottom: 1px solid rgb(190, 181, 181); */
+            border-bottom: none;
+            color: grey;
+            opacity: 0.6;
+        }
         #firebaseui-auth-container * {
             font-size: 2rem;
         }
@@ -564,6 +586,9 @@
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="/videoconference/">Videoconference</a>
                     </li> -->
+                    <li class="nav-item">
+                        <span class="nav-link" id="loginStatus" style="border-bottom:none"><a style="color:white" href="#" onclick="signIn()"></a></span>
+                    </li>
                     <li class="nav-item" id="userAvatar">
                         <img class="userIcon"/>
                     </li>

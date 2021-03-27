@@ -3,6 +3,9 @@ function initApp(app) {
   firebase.auth().onAuthStateChanged(async (user) => {
     if (user) {
       const { displayName, photoURL, providerData } = user;
+      document.querySelector("#userAvatar img").src = photoURL;
+      document.querySelector("#userAvatar").style.display = "inline-block";
+      document.getElementById("loginStatus").innerHTML = `<span id="user">${displayName}</span> (<a style="color:white" href="#" onclick="signOut()">Sign Out</a>)`;
       const { uid } = providerData[0];
       app.userSignedIn = true;
       app.uid = uid;
