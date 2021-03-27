@@ -1016,7 +1016,7 @@
 
             const circleName = "BrainWeb";
             const skill =  "netneurosci";
-            const filterSkills = ["graph theory", skill];
+            const filterSkills = ["graph theory", "Network Neuroscience", "multiplex", "Multilayer", "Networkx", "Complex networks", "Network theory", "Circuit dynamics", "Systems neuroscience", skill];
             const skills = [];
 
             function arr2dic(arr) {
@@ -1086,6 +1086,8 @@
                                 (s) => filterSkills.includes(s?.toLowerCase() || false)
                             )
                         )
+
+                    console.log("Number of people in the graph:", filteredPeople.length);
 
                     if(filteredPeople.length > 15) {
                         await addBrainWebToElement(
