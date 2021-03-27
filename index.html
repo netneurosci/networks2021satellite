@@ -587,7 +587,7 @@
                         <a class="nav-link" href="/videoconference/">Videoconference</a>
                     </li> -->
                     <li class="nav-item">
-                        <span class="nav-link" id="loginStatus" style="border-bottom:none"><a style="color:white" href="#" onclick="signIn()"></a></span>
+                        <span class="nav-link" id="loginStatus" style="border-bottom:none"></span>
                     </li>
                     <li class="nav-item" id="userAvatar">
                         <img class="userIcon"/>
@@ -606,7 +606,7 @@
 
                 <div id="networkContainer">
                     <div id="network"></div>
-                    <div id="networkInfo" v-if="!spinning">
+                    <div id="networkInfo" v-if="!spinning && !userSignedIn">
                         <a href="#" onclick="signIn(app)">Join the network!</a>
                     </div>
                 </div>
