@@ -22,6 +22,8 @@ function initApp(app) {
       app.userDisplayName = null;
       app.userGitHubName = null;
       app.userPicture = null;
+      document.querySelector("#userAvatar").style.display = "none";
+      document.querySelector("#userAvatar img").src = "";
     }
   }, function (error) {
     Sentry.captureException(error);
