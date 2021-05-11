@@ -27,7 +27,7 @@ If someone makes you or anyone else feel unsafe or unwelcome, please report it a
 
 Harassment or non-inclusive behavior is defined by you. So, do not hesitate to report something because someone else thinks the behavior is "reasonable". That person may not share your protected characteristic(s).  
 
-You can make a report by emailing the organisers at netneursci[at]gmail.com. This address will be continuously monitored during the event by the organisers. You may also report the incident to any one of the organising committee members that you feel most comfortable reporting to. The person you report to will share the information with the other organisers.
+You can make a report by emailing the organisers at netneurosci[at]gmail.com. This address will be continuously monitored during the event by the organisers. You may also report the incident to any one of the organising committee members that you feel most comfortable reporting to. The person you report to will share the information with the other organisers.
 
 
 ### What happens if I make a report?
