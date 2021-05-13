@@ -406,7 +406,7 @@
             position: relative;
             /* width: calc( 100% - 10px ); */
             width: 100%;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.3);
             margin: 0px;
             z-index: 1;
         }
@@ -419,7 +419,33 @@
             position: relative;
             /* width: calc( 100% - 10px ); */
             width: 100%;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            margin: 0px;
+            z-index: 1;
+        }
+        .programTableContentUnevenContrib {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+            align-content: space-between;
+            position: relative;
+            /* width: calc( 100% - 10px ); */
+            width: 100%;
+            background: rgba(255,255,255,0.18);
+            margin: 0px;
+            z-index: 1;
+        }
+        .programTableContentEvenContrib {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+            align-content: space-between;
+            position: relative;
+            /* width: calc( 100% - 10px ); */
+            width: 100%;
+            background: rgba(255,255,255,0.13);
             margin: 0px;
             z-index: 1;
         }
@@ -745,13 +771,13 @@
                                 </p>
                             </div>
                             <div class="programTableHeader">
-                                <h5>Preliminary schedule</h5>
+                                <h5>Schedule</h5>
                             </div>
                             <div id="programTableDays">
                                 <div id="programDay1">
 
                                     <div class="programDayHeader">
-                                        <p><b>Day 1. Preliminary time 12:30 PM–4:30 PM EST</b></p>
+                                        <p><b>Day 1. 12:30 PM–4:30 PM EST</b></p>
                                     </div> <!--programDay-->
 
                                     <div id="programDay1Before" class="programSessionsEmpty">
@@ -769,8 +795,23 @@
 
                                     <div class="programTableContentEven">
                                         <div class="programTableItems"><p>Contributed Talks</p></div>
-                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
+                                        <div class="programTableItems"><p></p></div>
                                     </div> <!--programTableContentEven-->
+
+                                    <div class="programTableContentUnevenContrib">
+                                        <div class="programTableItems"><p>A Spatial Developmental Generative Network Model of Human Brain Structural Connectivity</p></div>
+                                        <div class="programTableItems"><p>S. Oldham, A. Arnatkeviciute, K. Aquino, B. Fulcher & A. Fornito</p></div>
+                                    </div>
+                                    <div class="programTableContentEvenContrib">
+                                        <div class="programTableItems"><p>Exploring low- and high-order communication pathways in multimodal brain networks</p></div>
+                                        <div class="programTableItems"><p>A. Griffa, G. Allali, J. Grandjean, D. Van De Ville & E. Amico</p></div>
+                                    </div>
+                                    <div class="programTableContentUnevenContrib">
+                                        <div class="programTableItems"><p>Persistence of information flow: a multiscale characterization of human brain</p></div>
+                                        <div class="programTableItems"><p>B. Benigni, A. Ghavasieh, A. Corso, V. D'Andrea & M. De Domenico</p></div>
+                                    </div>
+
+
 
                                     <div class="programSessions">
                                         <p><b>Session 2: From Brain to Networks</b></p>
@@ -783,8 +824,23 @@
 
                                     <div class="programTableContentEven">
                                         <div class="programTableItems"><p>Contributed Talks</p></div>
-                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
+                                        <div class="programTableItems"><p></p></div>
                                     </div> <!--programTableContentEven-->
+
+                                    <div class="programTableContentUnevenContrib">
+                                        <div class="programTableItems"><p>Core-periphery markers of longitudinal BCI from multiplex brain networks</p></div>
+                                        <div class="programTableItems"><p>M.-C. Corsi, M. Chavez, D. Schwartz, N. George, L. Hugueville, A. E. Kahn, S. Dupont, D. S. Bassett & F. De Vico Fallani</p></div>
+                                    </div>
+                                    <div class="programTableContentEvenContrib">
+                                        <div class="programTableItems"><p>Graph Analysis and Cell Type Inference on Cerebellar Networks</p></div>
+                                        <div class="programTableItems"><p>I. Ricchi, T. Minh Nguyen, D. Van De Ville & W.-C. Allen Lee</p></div>
+                                    </div>
+                                    <div class="programTableContentUnevenContrib">
+                                        <div class="programTableItems"><p>Virtual connectomic datasets using whole-brain network dynamics modelling</p></div>
+                                        <div class="programTableItems"><p>L. Arbabyazd, K. Shen, Z. Wang, M. Hofmann-Apitius, P. Ritter, R. McIntosh, V. Jirsa & D. Battaglia</p></div>
+                                    </div>
+
+
 
                                     <div class="programSessions">
                                         <p><b>Session 3: Special Keynote</b></p>
@@ -794,6 +850,7 @@
                                         <div class="programTableItems"><p>Carolyn Parkinson</div>
                                         <div class="programTableItems"><p></p></div>
                                     </div> <!--programTableContentUneven-->
+
 
                                     <div class="programSessions">
                                         <p><b>Session 4: Panel/Open Discussion</b></p>
@@ -805,7 +862,7 @@
                                 <div id="programDay2">
 
                                     <div class="programDayHeader">
-                                        <p><b>Day 2. Preliminary time 8:30 AM–12:30 PM EST</b></p>
+                                        <p><b>Day 2. 8:30 AM–12:30 PM EST</b></p>
                                     </div>
 
                                     <div class="programSessions">
@@ -819,8 +876,24 @@
 
                                     <div class="programTableContentEven">
                                         <div class="programTableItems"><p>Contributed Talks</p></div>
-                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
+                                        <div class="programTableItems"><p></p></div>
                                     </div> <!--programTableContentEven-->
+
+
+                                    <div class="programTableContentUnevenContrib">
+                                        <div class="programTableItems"><p>Genetic properties of hub connectivity in the human brain</p></div>
+                                        <div class="programTableItems"><p>A. Arnatkeviciute, B. D. Fulcher, S. Oldham, J. Tiego, C. Paquola, Z. Gerring, K. Aquino, Z. Hawi, B. Johnson, G. Ball, M. Klein, G. Deco, B. Franke, M. A. Bellgrove & A. Fornito</p></div>
+                                    </div>
+                                    <div class="programTableContentEvenContrib">
+                                        <div class="programTableItems"><p>What does dynamic network connectivity tell us about cognitive variability during aging?</p></div>
+                                        <div class="programTableItems"><p>T. Hinault & S. Courtney</p></div>
+                                    </div>
+                                    <div class="programTableContentUnevenContrib">
+                                        <div class="programTableItems"><p>Structural connectivity within regions characterizes epilepsy duration and treatment outcome</p></div>
+                                        <div class="programTableItems"><p>X. Chen, Y. Wang, S. Kopetzky, M. Butz-Ostendorf & M. Kaiser</p></div>
+                                    </div>
+
+
 
                                     <div class="programSessions">
                                         <p><b>Session 2: Frontiers in Computational Methods and Models</b></p>
@@ -833,8 +906,25 @@
 
                                     <div class="programTableContentEven">
                                         <div class="programTableItems"><p>Contributed Talks</p></div>
-                                        <div class="programTableItems"><p>Will be announced shortly</p></div>
+                                        <div class="programTableItems"><p></p></div>
                                     </div> <!--programTableContentEven-->
+
+
+                                    <div class="programTableContentUnevenContrib">
+                                        <div class="programTableItems"><p>Edge community structure of functional MRI and meta-analytic activation</p></div>
+                                        <div class="programTableItems"><p>J. Faskowitz, T. Varley, R. Betzel & O. Sporns</p></div>
+                                    </div>
+                                    <div class="programTableContentEvenContrib">
+                                        <div class="programTableItems"><p>Bio-instantiated recurrent neural networks
+                                        </p></div>
+                                        <div class="programTableItems"><p>A. Goulas, F. Damicelli & C. Hilgetag</p></div>
+                                    </div>
+                                    <div class="programTableContentUnevenContrib">
+                                        <div class="programTableItems"><p>Modelling signal propagation through the human connectome at high spatiotemporal resolution</p></div>
+                                        <div class="programTableItems"><p>C. Seguin, M. Jedynak, O. David, O. Sporns & A. Zalesky</p></div>
+                                    </div>
+
+
 
                                     <div class="programSessions">
                                         <p><b>Session 3: Poster session</b></p>
