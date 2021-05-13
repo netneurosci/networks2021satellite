@@ -8,10 +8,10 @@ importScripts('./ml.min.js');
 self.onmessage = message => {
   if (message.data.method === 'addBrainWebToElement') {
     const { id, param } = message.data
-    const { people, loggedDisplayName } = param
+    const { people, loggedDisplayName, width, height } = param
     try {
 
-      const result = addBrainWebToElementWorkerFn(people, loggedDisplayName)
+      const result = addBrainWebToElementWorkerFn(people, loggedDisplayName, width, height)
       postMessage({
         id,
         result
@@ -25,12 +25,11 @@ self.onmessage = message => {
   }
 }
 
-function addBrainWebToElementWorkerFn(people, loggedDisplayName){
+function addBrainWebToElementWorkerFn(people, loggedDisplayName, width, height){
   const names = people.map(o=>o.displayname);
-  const width = 400;
-  const height = 400;
   const radius = 5;
-  const Z = 80;
+  const Z = 100;
+  const maj = width/height;
   
   const fullNetwork = peopleArrToNetwork(people);
   const matrix = networkToSkillsMatrix(fullNetwork, people);
@@ -44,15 +43,18 @@ function addBrainWebToElementWorkerFn(people, loggedDisplayName){
   const embedding = umap2.fit(matrix2);
   
   // align embedding axes
-  const axes = findPrincipalComponents(embedding);
-  const {mean, evec1, evec2} = axes;
+  const {mean, evec1, evec2} = findPrincipalComponents(embedding);
+  let [maxX, maxY] = [0, 0];
   for(let i=0;i<embedding.length;i++) {
     let [x, y] = embedding[i];
     x -= mean[0];
     y -= mean[1];
     embedding[i][0] = x*evec1[0] + y*evec1[1];
     embedding[i][1] = x*evec2[0] + y*evec2[1];
+    if(embedding[i][0]>maxX) maxX = embedding[i][0];
+    if(embedding[i][1]>maxY) maxY = embedding[i][1];
   }
+  console.log({maxX, maxY});
   
   // 5d embedding for clustering
   const umap5 = new UMAP({nComponents:5});
@@ -63,7 +65,6 @@ function addBrainWebToElementWorkerFn(people, loggedDisplayName){
   const finalMatrix = JSON.parse(JSON.stringify(matrix));
   const finalEmbedding = [];
   let j=0;
-  const maj = width/height;
   const R = 0.9*width/Z/2;
   for(let i=0;i<matrix.length;i++) {
     if(lut.indexOf(i)<0) {
@@ -89,8 +90,6 @@ function addBrainWebToElementWorkerFn(people, loggedDisplayName){
   skillsMatrixClustersToGroups(matrix, prunedNetwork);
   return {
     prunedNetwork,
-    width,
-    height,
     radius
   }
 }

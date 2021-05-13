@@ -101,7 +101,18 @@
             text-decoration: none;
             border: none;
         }
-        #landinggraph a:hover,#landinggraph a:focus,#landinggraph a:active,#program a:hover,#program a:focus,#program a:active, #submit a:hover,#submit a:focus,#submit a:active, #register a:hover,#register a:focus,#register a:active {
+        #landinggraph a:hover,
+        #landinggraph a:focus,
+        #landinggraph a:active,
+        #program a:hover,
+        #program a:focus,
+        #program a:active,
+        #submit a:hover,
+        #submit a:focus,
+        #submit a:active,
+        #register a:hover,
+        #register a:focus,
+        #register a:active {
             font-weight: 700;
             text-decoration: none;
             border: none;
@@ -112,7 +123,9 @@
             text-decoration: none;
             border: none;
         }
-        #organizers a:hover,#organizers a:focus,#organizers a:active {
+        #organizers a:hover,
+        #organizers a:focus,
+        #organizers a:active {
             font-weight: 500;
             text-decoration: none;
             border: none;
@@ -216,7 +229,7 @@
         }
         @media only screen and (-webkit-max-device-pixel-ratio: 2) and (min-width: 900px) {
             #network svg text {
-                font-size: 0.8rem !important;
+                font-size: 1.5rem !important;
             }
         }
         #network svg {
@@ -448,6 +461,20 @@
             background: rgba(255,255,255,0.13);
             margin: 0px;
             z-index: 1;
+        }
+        @media (max-width: 900px) {
+            .programTableContentUnevenContrib {
+                flex-direction: column;
+            }
+            .programTableContentEvenContrib {
+                flex-direction: column;
+            }
+            .programTableContentUnevenContrib > div:nth-child(1) > p {
+                font-weight: bold !important;
+            }
+            .programTableContentEvenContrib > div:nth-child(1) > p {
+                font-weight: bold !important;
+            }
         }
         .programTableItems {
             border: 0;

@@ -1,15 +1,16 @@
 function chart(data, {width, height, radius, clickCallback}) {
+  const zoom = 1.5;
   const nodes = data.nodes;
   const links = data.links;
   const simulation = d3.forceSimulation(nodes)
     .velocityDecay(0.1)
-    .force("x", d3.forceX(width * 0.5).strength(0.005))
-    .force("y", d3.forceY(height * 0.5 + height * 0.05).strength(0.005))
+    // .force("x", d3.forceX(width * 0.5).strength(0.005))
+    // .force("y", d3.forceY(height * 0.5 + height * 0.05).strength(0.005))
     .force("link", d3.forceLink(links).id(d => d.id).distance((link) => {
       const dist = Math.sqrt((link.source.x - link.target.x)**2 + (link.source.y - link.target.y)**2);
       return dist;
     }))
-    .force("collision", d3.forceCollide(5));
+    .force("collision", d3.forceCollide(5*zoom));
 
   const svg = d3.create("svg")
     .attr("viewBox", [0, 0, width, height])
@@ -23,18 +24,18 @@ function chart(data, {width, height, radius, clickCallback}) {
     .data(links)
     .join("line")
       .attr('class', 'link')
-      .attr("stroke-width", d => Math.pow(d.value,1/4));
+      .attr("stroke-width", d => zoom * Math.pow(d.value,1/4));
 
   function mouseover() {
     d3.select(this).transition()
       .duration(50)
-      .attr("r", radius * 2);
+      .attr("r", radius * zoom * 1.5);
   }
 
   function mouseout() {
     d3.select(this).transition()
       .duration(50)
-      .attr("r", radius);
+      .attr("r", radius * zoom);
   }
 
   const node = svg.append("g")
@@ -47,7 +48,7 @@ function chart(data, {width, height, radius, clickCallback}) {
   const scale = d3.scaleOrdinal(d3.schemePaired);
   node.append('circle')
     .attr('class', (d) => d.classes || '')
-    .attr("r", radius)
+    .attr("r", radius * zoom)
     .attr("fill", (d)=>{return scale(d.group);})
     .on("click", (d) => {
       const {index} = d;
@@ -139,14 +140,16 @@ function workerFnWrapper(method, param){
 }
 
 async function addBrainWebToElement(el, people, loggedDisplayName, clickCallback) {
+    const width = document.querySelector("#networkContainer").offsetWidth;
+    const height = document.querySelector("#networkContainer").offsetHeight;
     const {
         prunedNetwork,
-        width,
-        height,
         radius
     } = await workerFnWrapper('addBrainWebToElement', {
         people,
-        loggedDisplayName
+        loggedDisplayName,
+        width, height
+      
     })
     // display network
     const mysvg = chart(prunedNetwork, {width, height, radius, clickCallback});
