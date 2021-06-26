@@ -28,7 +28,6 @@ self.onmessage = message => {
 function addBrainWebToElementWorkerFn(people, loggedDisplayName, width, height){
   const names = people.map(o=>o.displayname);
   const radius = 5;
-  const Z = 100;
   const maj = width/height;
   
   const fullNetwork = peopleArrToNetwork(people);
@@ -37,25 +36,45 @@ function addBrainWebToElementWorkerFn(people, loggedDisplayName, width, height){
   // remove null entries from matrix
   const lut = findNullEntriesInMatrix(matrix);
   const matrix2 = removeNullEntriesInMatrix(matrix, lut);
+
+  // add background link
+  const N = matrix2.length;
+  for(let i=0; i<N; i++) {
+    for(let j=i; j<N; j++) {
+      matrix2[i][j] += 0.2;
+    }
+  }
   
   // 2d embedding for display
-  const umap2 = new UMAP();
+  const umap2 = new UMAP({spread:5, minDist:1});
   const embedding = umap2.fit(matrix2);
   
   // align embedding axes
   const {mean, evec1, evec2} = findPrincipalComponents(embedding);
-  let [maxX, maxY] = [0, 0];
-  for(let i=0;i<embedding.length;i++) {
+  let [minX, maxX, minY, maxY] = [0, 0, 0, 0];
+  for(let i=0; i<embedding.length; i++) {
     let [x, y] = embedding[i];
     x -= mean[0];
     y -= mean[1];
     embedding[i][0] = x*evec1[0] + y*evec1[1];
     embedding[i][1] = x*evec2[0] + y*evec2[1];
-    if(embedding[i][0]>maxX) maxX = embedding[i][0];
-    if(embedding[i][1]>maxY) maxY = embedding[i][1];
   }
-  console.log({maxX, maxY});
+
+  // find embedding size
+  for(let i=0; i<embedding.length; i++) {
+    minX = Math.min(minX, embedding[i][0]);
+    maxX = Math.max(maxX, embedding[i][0]);
+    minY = Math.min(minY, embedding[i][1]);
+    maxY = Math.max(maxY, embedding[i][1]);
+  }
+  const Z = 0.95 * Math.min(width/(maxX-minX), height/(maxY-minY));
   
+  // center embedding
+  for(let i=0; i<embedding.length; i++) {
+    embedding[i][0] -= (minX + maxX)/2;
+    embedding[i][1] -= (minY + maxY)/2;
+  }
+
   // 5d embedding for clustering
   const umap5 = new UMAP({nComponents:5});
   const embedding5 = umap5.fit(matrix2);
