@@ -52,3 +52,8 @@ body {
   height: calc( 100% - 45px);
   margin-top: 45px;
 }
+
+.openseadragon-container,
+.openseadragon-canvas {
+  outline: none;
+}
