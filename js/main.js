@@ -5,7 +5,7 @@ $(document).ready(function(){
     var h = window.location.hash;
     if (h) {
         setTimeout(()=>{
-            console.log("BIM", h, $(h).offset().top)
+            // console.log("BIM", h, $(h).offset().top)
             $('html, body').stop().animate({
                 scrollTop : $(h).offset().top
             }, 1000);

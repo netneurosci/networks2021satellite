@@ -1,3 +1,13 @@
+  function initChat(user) {
+    var chatRef = firebase.database().ref("chat");
+
+    // Create a Firechat instance
+    var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
+
+    // Set the Firechat user
+    chat.setUser(user.uid, user.displayName);
+  }
+
 
 function initApp(app) {
   firebase.auth().onAuthStateChanged(async (user) => {
@@ -16,6 +26,9 @@ function initApp(app) {
         app.userDisplayName = json.login;
       }
       app.userPicture = photoURL;
+
+      initChat(user);
+
     } else {
       app.userSignedIn = false;
       app.uid = null;

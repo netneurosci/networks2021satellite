@@ -1,0 +1,54 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: rgb(15, 15, 15);
+}
+
+.userIcon {
+  width: 32px;
+  height: 32px;
+  clip-path: circle(16px at center);
+}
+
+#userAvatar {
+  display: none;
+}
+
+.auth-dialog>div:first-child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  border: thin solid #777;
+  transform: translate( -50%, -50%);
+  z-index: 1050;
+}
+
+#loginStatus a {
+  border-bottom: none;
+  color: white;
+}
+
+#loginStatus a:hover {
+  border-bottom:none;
+  color: grey;
+  opacity: 0.6;
+}
+
+#csv {
+  margin-top: 4em;
+  margin-bottom: 2em;
+}
+
+#openseadragon1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc( 100% - 45px);
+  margin-top: 45px;
+}
