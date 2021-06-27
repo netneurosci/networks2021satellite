@@ -1,11 +1,22 @@
   function initChat(user) {
-    var chatRef = firebase.database().ref("chat");
+    const chatRef = firebase.database().ref("chat");
 
     // Create a Firechat instance
-    var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
+    const chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
+
+    chat._chat.on("room-enter", (msg) => {console.log("room-enter", msg)});
 
     // Set the Firechat user
     chat.setUser(user.uid, user.displayName);
+
+    // Auto-enter "Main" room
+    chat._chat.getRoomList((rooms) => {
+      for(const id in rooms) {
+        if(rooms[id].name === "Main") {
+          chat._chat.enterRoom(id);
+        }
+      }
+    })
   }
 
 
