@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     /* This code has to be executed after ".header" height is changed */
     var h = window.location.hash;
-    if (h) {
+    if (h && h.split("=")[0] !== "#zoom") {
         setTimeout(()=>{
             // console.log("BIM", h, $(h).offset().top)
             $('html, body').stop().animate({

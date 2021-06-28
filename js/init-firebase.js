@@ -12,11 +12,15 @@
     // Auto-enter "Main" room
     chat._chat.getRoomList((rooms) => {
       for(const id in rooms) {
+        if({}.hasOwnProperty.call(rooms, id) === false)
+          break;
+        if({}.hasOwnProperty.call(rooms[id], "name") === false)
+          break;
         if(rooms[id].name === "Main") {
           chat._chat.enterRoom(id);
         }
       }
-    })
+    });
   }
 
 
