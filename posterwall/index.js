@@ -32,6 +32,7 @@ const displayPosters = (posters) => {
       <path class="video" d="m 16.837732,20.440612 v 19.377113 h 24.589197 v -8.876977 l 3.412712,1.970421 5.397084,3.11609 v -6.232178 -6.232178 l -5.397084,3.116088 -3.412712,1.970423 v -8.208802 z"
       fill="white" stroke-width="5" onclick="openJit('nn21-${id}', '${name}');" style="cursor:pointer; pointer-events: visiblePainted"></path>
       <text font-size="30" x="70" y="40" fill="white"></text>
+      <g transform="translate(30,30)"><circle cx="0" cy="0" r="1" stroke-width="0.1" fill="none" stroke="white" /></g>
     </g>
     `;
   }
@@ -60,9 +61,11 @@ const updateVideochatIcon = (sel, count) => {
   if (count === 0) {
     el.querySelector("text").innerHTML = "";
     el.querySelector(".bubble").setAttribute("fill", "rgba(255,255,255,0.4)");
+    el.classList.remove("connected");
   } else {
     el.querySelector("text").innerHTML = count;
     el.querySelector(".bubble").setAttribute("fill", "rgb(0, 220, 0)");
+    el.classList.add("connected");
   }
 }
 

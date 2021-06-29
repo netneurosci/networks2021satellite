@@ -57,3 +57,13 @@ body {
 .openseadragon-canvas {
   outline: none;
 }
+
+@keyframes wave {
+  from {transform: scale(1); opacity: 1;}
+  to {transform: scale(100); opacity: 0;}
+}
+
+.connected > g > circle {
+  animation-name: wave;
+  animation-duration: 2s;
+}
