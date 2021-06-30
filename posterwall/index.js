@@ -13,25 +13,26 @@ function openJit(id, name) {
 }
 
 const displayPosters = (posters) => {
-  const z = 1; // 0.1;
-  const g = 1000/(5221+6313) * 0.915;
+  const [minx, maxx, miny, maxy] = [-6312.8579, 4021.7126, -4834.8994, 1477.1853];
+  const g = 1000/(maxx - minx) * 0.924;
   let svg = "";
   let i =0;
   for (const p of posters) {
     i += 1;
-    p.x = (p.x + 6313)*g;
-    p.y = (p.y + 4826)*g;
+    p.x = (p.x - minx)*g;
+    p.y = (p.y - miny)*g;
     p.width *= g;
     p.height *= g;
     //     d="M${p.x},${p.y}h${p.width}v${p.height}h${-p.width}v${-p.height}"
     // d="M${p.x},${p.y-10}h10v10h-10v-10"
     const [id, name] = p.pid.split("_");
-    svg += `<g id="nn21-${id}" transform="translate(${p.x},${p.y-13}) scale(0.2)">
+    // svg += `<g id="nn21-${id}" transform="translate(${p.x},${p.y-13}) scale(0.2)">
+    svg += `<g id="nn21-${id}" transform="translate(${p.x - 14*(id==="46"||id==="48")},${p.y - 13 + 12*(id==="46"||id==="48")}) scale(0.2)">
       <path class="bubble" d="M 31.848061,7.6290677 A 28.403238,22.039304 0 0 0 3.596657,29.668006 28.403238,22.039304 0 0 0 10.583386,44.14469 L 7.6648251,56.370967 20.270838,49.740068 A 28.403238,22.039304 0 0 0 32,51.707502 28.403238,22.039304 0 0 0 60.403343,29.668006 28.403238,22.039304 0 0 0 32,7.6290677 a 28.403238,22.039304 0 0 0 -0.151939,0 z"
       fill="rgba(255,255,255,0.4)" onclick="openJit('nn21-${id}', '${name}');" style="cursor:pointer; pointer-events: visiblePainted"></path>
       <path class="video" d="m 16.837732,20.440612 v 19.377113 h 24.589197 v -8.876977 l 3.412712,1.970421 5.397084,3.11609 v -6.232178 -6.232178 l -5.397084,3.116088 -3.412712,1.970423 v -8.208802 z"
       fill="white" stroke-width="5" onclick="openJit('nn21-${id}', '${name}');" style="cursor:pointer; pointer-events: visiblePainted"></path>
-      <text font-size="30" x="70" y="40" fill="white"></text>
+      <text font-size="30" x="${70-45*(id==="46"||id==="48")}" y="${40+46*(id==="46"||id==="48")}" fill="white"></text>
       <g transform="translate(30,30)"><circle cx="0" cy="0" r="1" stroke-width="0.1" fill="none" stroke="white" /></g>
     </g>
     `;
@@ -121,7 +122,7 @@ const main = async () => {
     navigatorAutoFade:  false,
     id: "openseadragon1",
     showNavigationControl: false,
-    tileSources: "https://microdraw.pasteur.fr/netneurosci2021/dzi.js"
+    tileSources: "https://microdraw.pasteur.fr/netneurosci2021/ducky.js"
   });
   
   viewer.bookmarkUrl();
