@@ -23,6 +23,22 @@
     });
   }
 
+/**
+ * fetch user information given the GitHub user id number
+ * @param {string} uid Numeric GitHub user identifier
+ * @returns {object} User information from GitHub
+ */
+const fetchUserInfoFromGitHub = async (uid) => {
+  let json, res;
+  try {
+    res = await fetch(`https://api.github.com/user/${uid}`);
+    json = await res.json();
+  } catch (err) {
+    throw new Error(err);
+  }
+
+  return json;
+};
 
 function initApp(app) {
   firebase.auth().onAuthStateChanged(async (user) => {
