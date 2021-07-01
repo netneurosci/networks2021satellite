@@ -541,6 +541,32 @@
         #bestexperience b {
             font-weight: 600;
         }
+        .posterUneven {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+            align-content: space-between;
+            position: relative;
+            /* width: calc( 100% - 10px ); */
+            width: 100%;
+            background: rgba(255,255,255,0.3);
+            margin: 0px;
+            z-index: 1;
+        }
+        .posterEven {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+            align-content: space-between;
+            position: relative;
+            /* width: calc( 100% - 10px ); */
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            margin: 0px;
+            z-index: 1;
+        }
         #submit {
             /* background: rgba(220, 220, 220, 0.1); */
             padding-top: 6rem;
@@ -1058,6 +1084,129 @@
                                     will be linked from that same page once the conference is running, and posters where people are connected will be highlighted on the posterwall, showing a little number of how many people are connected to the poster. We recommend to use Chrome browser as the rooms rely on jitsi. But other browsers should work fine as well.<br />
                                     In your poster room, you can video chat with people, and also share your screen for additional or interactive content. You could, for example, open your poster and walk people through. Note: the chat will currently not be saved once you leave the room. Work in progress to have a persistent poster room chat 🤩.<br />
                                     🎥 🎥 You can have several poster rooms open simultaneously. Each room will open in a new tab. This allows you, for example, to keep an eye on your own room while visiting other posters and either inviting interested guests from your own poster to another room first, and then hop over to yours together later, or just quit the other room and join your visitor. Important: Just make sure you are <b>muted in all but one</b> of the jitsi rooms. 
+                                </p>
+                            </div>
+
+                        </div> <!--programTableContainer-->
+
+                    </div> <!--row of best experience section-->
+
+                </div> <!--container of best experience section-->
+
+            </div> <!--best experience div-->
+
+
+            <!-- part 2.75 poster list -->
+            <div v-cloak v-if="!spinning" class="row" id="posterlist">
+                <div v-cloak v-if="!spinning" class="container" style="background: rgba(0,0,0,0.3);">
+                    <h4 style="color: #c0ffdf;">Posters at the Network Neuroscience 2021 satellite</h4>
+                    <div v-cloak v-if="!spinning" class="row">
+
+                        <div id="programTableContainer">
+                            <div class="programTableDescription" style="padding-bottom:2rem;">
+                                <p>
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.05243432987438438&y=0.037816166561716456" style=color:rgba(255,255,255,1.0);font-weight:300;>Kausar Abbas et al.  Tangent Space Projections of Functional Connectomes improve their phenotypic reliability, as measured by their fingerprint gradient</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.05368707684597979&y=0.25316243373892555" style=color:rgba(255,255,255,0.8);font-weight:300;>Timofey Adamovich et al.  Graph invariants approach to classification of brain functional connectivity patterns</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.4356485437664511&y=0.2530392289131307" style=color:rgba(255,255,255,1.0);font-weight:300;>Bradly Alicea et al.  Neuromorphogenetic Patterns and the Theory of Deep Learning</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.18181861786051262&y=0.2539000716389365" style=color:rgba(255,255,255,0.8);font-weight:300;>Priscila C. Antoneli et al.  Topological self-organization in developing in vitro neuronal networks</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.15720655225431818&y=0.039671380444174294" style=color:rgba(255,255,255,1.0);font-weight:300;>Aurina Arnatkevičiūtė et al.  Genetic properties of hub connectivity in the human brain</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.3085566213236677&y=0.2532051176047892" style=color:rgba(255,255,255,0.8);font-weight:300;>Vincent Bazinet et al.  Assortativity in annotated cortico-cortical brain networks</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.054107567666618984&y=0.38089538793736377" style=color:rgba(255,255,255,1.0);font-weight:300;>Richard Betzel et al.  Task-induced reconfiguration of edge functional connectivity and communities</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.1820506719372586&y=0.3810407344700581" style=color:rgba(255,255,255,0.8);font-weight:300;>Richard Betzel et al.  Individualized event structure drives individual differences in whole-brain functional connectivity</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.2580472981021548&y=0.04043942767869097" style=color:rgba(255,255,255,1.0);font-weight:300;>Lingbin Bian et al.  Multilayer community detection for functional brain networks via hierarchical Bayesian modelling</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.5633263121415258&y=0.25332188743508754" style=color:rgba(255,255,255,0.8);font-weight:300;>Lucas C. Breedt et al.  Multimodal, multilayer brain network topology correlates of healthy aging and executive functioning</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.4575454708518988&y=0.0443100081091868" style=color:rgba(255,255,255,1.0);font-weight:300;>Gang Chen et al.   Resolving multiple testing issue in network modeling through Bayesian multilevel framework</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.7365023847124543&y=0.6052438571453901" style=color:rgba(255,255,255,0.8);font-weight:300;>Xue Chen et al.  Connectivity within regions characterizes epilepsy duration and treatment outcome</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.054335740452049065&y=0.17101391624886184" style=color:rgba(255,255,255,1.0);font-weight:300;>Evgeny J Chumin et al.  Cortico-Subcortical Interactions in Overlapping Communities of Edge Functional Connectivity</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.355511000285197&y=0.044374023999278034" style=color:rgba(255,255,255,0.8);font-weight:300;>Marie-Constance Corsi  et al.  Core-periphery markers of longitudinal BCI from multiplex brain networks</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.4363814843133324&y=0.37985214295688413" style=color:rgba(255,255,255,1.0);font-weight:300;>Sarah A. Cutts et al.  Uncovering Individual Differences in Fine-Scale Dynamics of Functional Connectivity</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.6915067029702818&y=0.3799966939621982" style=color:rgba(255,255,255,0.8);font-weight:300;>Matteo Demuru et al.  On the relationship between power spectrum and derived network metrics</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.18138941476648845&y=0.17278875340437094" style=color:rgba(255,255,255,1.0);font-weight:300;>Duy Dương-Trần et al.  A principled framework to assess and estimate the whole-brain functional connectivity based on brain functional networks</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.3090958881111691&y=0.3806727223716659" style=color:rgba(255,255,255,0.8);font-weight:300;>Joshua Faskowitz et al.  An edge-centric model for harmonizing multi-relational network datasets</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.13504364545762984&y=0.6065508236989156" style=color:rgba(255,255,255,1.0);font-weight:300;>Joshua Faskowitz et al.  Edge community structure of functional MRI and meta-analytic activation</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.3094823001572246&y=0.17412068706096911" style=color:rgba(255,255,255,0.8);font-weight:300;>Mahshid Fouladivanda et al.   Multiscale Structural And Functional Rich-Club Organization of the Brain in Fullterm Neonates</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.9455305892732531&y=0.16617580890742534" style=color:rgba(255,255,255,1.0);font-weight:300;>Makoto Fukushima et al.  Routing strategies for packet-based communication in brain networks</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.564537059877764&y=0.17385011432685935" style=color:rgba(255,255,255,0.8);font-weight:300;>Juliana Gonzalez-Astudillo et al.  Spatial network metrics for characterizing brain-computer interface mental states</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.557970585282356&y=0.04410748269217566" style=color:rgba(255,255,255,1.0);font-weight:300;>Rikkert Hindriks.  Relation between the phase-lag index and lagged coherence for assessing interactions in EEG and MEG data</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.6901170630644176&y=0.2532014995122928" style=color:rgba(255,255,255,0.8);font-weight:300;>Maya A. Jastrzębowska et al.  Identification of directed neural interactions with Granger causality and dynamic causal modeling: a comprehensive comparison</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.6175993406672583&y=0.6083377367335671" style=color:rgba(255,255,255,1.0);font-weight:300;>Jayant Jha et al.  Bayesian estimation of the spatial map of epileptogenicity</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.691174809617165&y=0.17380703411283505" style=color:rgba(255,255,255,0.8);font-weight:300;>Baris Kaan Ok et al.  Brain Glucose Hypo-metabolism in Patients with Disorders of Consciousness: a Meta-analysis</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.6653847135000481&y=0.04403500759990894" style=color:rgba(255,255,255,1.0);font-weight:300;>Maedeh Khalilian et al.  Age-related changes in structural and functional rich club organization of the brain in adults</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.8185260226658918&y=0.25343301779726907" style=color:rgba(255,255,255,0.8);font-weight:300;>Loren Koçillari et al.  Impact of Fiber Directionality in Modelling the Critical Behavior of Mouse Resting-State Networks</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.9458744259847259&y=0.2534326129559336" style=color:rgba(255,255,255,1.0);font-weight:300;>Eleanna Kritikaki et al.  A dynamics-based approach to thresholding tractography-based connectomes</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.775229578458264&y=0.04398709476938074" style=color:rgba(255,255,255,0.8);font-weight:300;>Matteo Mancini et al.  Characterizing whole-brain conduction delays through MRI microstructural measures</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.5641864825713291&y=0.38010138083570766" style=color:rgba(255,255,255,1.0);font-weight:300;>Ayush Mandwal et al.  A web-based visualization tool for large- scale functional human brain networks</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.6818648915487223&y=0.48048170737398754" style=color:rgba(255,255,255,0.8);font-weight:300;>Daniele Marinazzo et al.  Can/should higher-order information measures in multivariate dynamical systems be represented by hypergraphs?</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.05341360092473035&y=0.4801016208119809" style=color:rgba(255,255,255,1.0);font-weight:300;>Daniele Marinazzo et al.  Edge functional networks: what can we learn beyond what the covariance matrix already tells us?</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.1867854932088961&y=0.4802240244482796" style=color:rgba(255,255,255,0.8);font-weight:300;>Anastasia Mirza-Davies et al.  Structural brain networks of young adults at genetic risk of developing Alzheimer’s disease</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.25489772541074723&y=0.607725325034972" style=color:rgba(255,255,255,1.0);font-weight:300;>‪Ana Paula Millán et al.  Brain network models of seizure propagation and epilepsy surgery</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.8183880452813319&y=0.3795972712720597" style=color:rgba(255,255,255,0.8);font-weight:300;>Anant Naik et al.  The Representation of Cognitive Decline in Neurodegeneration as Faults in Neural Networks: A Novel Paradigm</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.9461596230731367&y=0.3800377612937771" style=color:rgba(255,255,255,1.0);font-weight:300;>Leonardo Novelli et al.  A statistical perspective on edge-centric functional connectivity</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.4363213667171581&y=0.17415571574521196" style=color:rgba(255,255,255,0.8);font-weight:300;>Stuart Oldham et al.  Physiologically Constrained Generative Models of the Human Connectome</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.31913427827256374&y=0.48132644987128875" style=color:rgba(255,255,255,1.0);font-weight:300;>Yusuf Osmanlioglu et al.  Connectomic Assessment of Injury Burden and Structural Network Alterations in Moderate-to-severe Traumatic Brain Injury</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.4485486278157843&y=0.4802284522234478" style=color:rgba(255,255,255,0.8);font-weight:300;>David Pascucci.  Modeling large-scale dynamic brain networks during perception and cognition</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.8183194833460371&y=0.17097325800520577" style=color:rgba(255,255,255,1.0);font-weight:300;>Maria Pope et al.  Modular Origins of High-Amplitude Co-fluctuations in Fine-scale Functional Connectivity Dynamics</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.8134687946535036&y=0.480172077359686" style=color:rgba(255,255,255,0.8);font-weight:300;>Pratyush M R et al.  Network Topology Determines Neuronal Phase-of-Firing Codes</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.8749174626611032&y=0.044415099824031884" style=color:rgba(255,255,255,1.0);font-weight:300;>Javier Rasero et al.  Response conflict tasks rely on different underlying network dynamics, despite overlapping activity profiles</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.9463877175225313&y=0.480345618401907" style=color:rgba(255,255,255,0.8);font-weight:300;>Ilaria Ricchi et al.  Graph Analysis and Cell Type Identification on Cerebellar Networks</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.9745598475106079&y=0.044409463186973135" style=color:rgba(255,255,255,1.0);font-weight:300;>Rafael Romero-Garcia et al.  Memory recovery is related to default mode network impairment and neurite density during brain tumours treatment</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.3757660526049689&y=0.6081730597348575" style=color:rgba(255,255,255,0.8);font-weight:300;>Viktor Sip et al.  Model inversion techniques for seizure spread in individual brain networks</a><br />
+
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.579363360416589&y=0.4786142677172869" style=color:rgba(255,255,255,1.0);font-weight:300;>Sophie Skriabine et al.   A Simple Network Model to Describe Structural Plasticity in Vascular Brain Networks</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.054279814697246916&y=0.5916608188237742" style=color:rgba(255,255,255,0.8);font-weight:300;>Paul J Thomas et al.  Network Diffusion Embedding Reveals Transdiagnostic Subnetwork Disruption and Potential Treatment Targets in Internalizing Psychopathologies</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.49539264163047103&y=0.6084689987512604" style=color:rgba(255,255,255,1.0);font-weight:300;>Sofie L. Valk et al.  Genetic and phylogenetic uncoupling of structure and function in human transmodal cortex</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.9785132412627953&y=0.5924081162946734" style=color:rgba(255,255,255,0.8);font-weight:300;>Gabriel Wainstein et al.  The ascending arousal system promotes optimal performance through meso-scale network integration in a visuospatial attentional task</a><br />
+
+                                    <a href="https://netneurosci.github.io/networks2021satellite/posterwall/#zoom=8.916100448255998&x=0.856538456859146&y=0.6057250124884086" style=color:rgba(255,255,255,1.0);font-weight:300;>Gorka Zamora-López et al.  Structural brain connectivity and the paradox of weak links</a><br />
                                 </p>
                             </div>
 
