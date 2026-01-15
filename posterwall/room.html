@@ -69,7 +69,7 @@
         console.log(id, roomName);
         if(!roomName) alert("no room name set in hash");
 
-        const api = new JitsiMeetExternalAPI("jitsi.deufleurs.org", { // meet.jit.si", {
+        const api = new JitsiMeetExternalAPI("jitsi.deuxfleurs.org", { // meet.jit.si", {
             roomName,
             parentNode: document.querySelector('#meet')
         }).addEventListener("readyToClose", () => {
