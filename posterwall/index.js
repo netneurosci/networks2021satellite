@@ -5,7 +5,7 @@ const fetchPosters = async () => {
 }
 
 const goToRoom = (roomName) => {
-  location.href = `https://meet.jit.si/NetNeurosci2021_${roomName}`;
+  location.href = `https://jitsi.deuxfleurs.fr/NetNeurosci2021_${roomName}`;
 }
 
 function openJit(id, name) {
