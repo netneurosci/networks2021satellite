@@ -97,7 +97,7 @@ function websocketOnMessage(e) {
 }
 
 function connectToWebsocket() {
-  wss = new ReconnectingWebSocket("wss://brainspell.org/vcrooms");
+  wss = new ReconnectingWebSocket("wss://brainspell.pasteur.fr/vcrooms");
   // wss = new WebSocket("wss://dev1.soichi.us/ohbm2020/");
   wss.onopen = () => {
     console.log("send dump");
