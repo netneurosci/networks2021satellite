@@ -63,13 +63,13 @@
         let roomName = hash.split(".")[1];
         let cid = Math.random().toString(); //client id
         let timer;
-        wss = new ReconnectingWebSocket("wss://brainspell.org/vcrooms");
+        wss = new ReconnectingWebSocket("wss://brainspell.pasteur.fr/vcrooms");
         // let wss = new WebSocket("wss://dev1.soichi.us/ohbm2020/");
 
         console.log(id, roomName);
         if(!roomName) alert("no room name set in hash");
 
-        const api = new JitsiMeetExternalAPI("meet.jit.si", {
+        const api = new JitsiMeetExternalAPI("jitsi.deufleurs.org", { // meet.jit.si", {
             roomName,
             parentNode: document.querySelector('#meet')
         }).addEventListener("readyToClose", () => {
